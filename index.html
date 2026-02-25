@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seguros Monterrey New York Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+
+      <a href="/" class="header__logo" aria-label="Seguros Monterrey New York Life">
+        <div class="logo-box">
+          <span class="logo-text">SMNYL</span>
+        </div>
+      </a>
+
+      <nav class="header__nav-main" aria-label="Navegación principal">
+        <button class="nav-item js-menu-trigger" data-menu="individuales" aria-expanded="false" aria-controls="megaMenu">
+          Seguros individuales
+        </button>
+        <button class="nav-item js-menu-trigger" data-menu="grupales" aria-expanded="false" aria-controls="megaMenu">
+          Seguros grupales
+        </button>
+        <a href="#" class="nav-item nav-item--link">Conócenos</a>
+        <a href="#" class="nav-item nav-item--link">Únete</a>
+      </nav>
+
+      <nav class="header__nav-alt" aria-label="Navegación secundaria">
+        <a href="#" class="nav-item-alt">Ayuda y contacto</a>
+        <a href="#" class="nav-item-alt">Documentos</a>
+        <a href="#" class="nav-item-alt">Mi SMNYL Clientes</a>
+        <a href="#" class="nav-item-alt">Mi SMNYL Asesores</a>
+        <button class="search-trigger js-search-trigger" aria-label="Buscar" aria-expanded="false" aria-controls="searchPanel">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2"/>
+            <path d="M15.5 15.5L20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ===================== MEGA MENU ===================== -->
+  <div class="mega-menu" id="megaMenu" aria-hidden="true">
+
+    <!-- Sidebar L1 (blanco) -->
+    <div class="sidebar sidebar--l1">
+      <h6 class="sidebar__title js-menu-title">Seguros individuales</h6>
+      <ul class="sidebar__nav" id="sidebarL1Nav"></ul>
+      <div class="sidebar__cta">
+        <div class="sidebar__cta-rule"></div>
+        <p class="sidebar__cta-title">Cuenta con un seguro adecuado a tus objetivos</p>
+        <p class="sidebar__cta-desc">Nuestros asesores te ayudan a encontrar el plan perfecto para ti y tu familia.</p>
+        <a href="#" class="cta-link">
+          Me interesa
+          <svg class="icon icon--arrow-long" viewBox="0 0 26 14" fill="none">
+            <path d="M0 7H24M24 7L18 1.5M24 7L18 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Sidebar L2 (arena) -->
+    <div class="sidebar sidebar--l2" id="sidebarL2" aria-hidden="true">
+      <div id="sidebarL2Content" class="sidebar__inner"></div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="mega-menu__overlay js-close-menu" tabindex="-1" aria-label="Cerrar menú"></div>
+
+  </div>
+
+  <!-- ===================== SEARCH PANEL ===================== -->
+  <div class="search-panel" id="searchPanel" aria-hidden="true">
+
+    <div class="sidebar sidebar--search">
+      <h6 class="sidebar__title">Búsqueda</h6>
+      <div class="search-input-group">
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="¿Cómo te ayudamos hoy?"
+          aria-label="Buscar"
+          autocomplete="off"
+        >
+        <button class="search-btn" aria-label="Realizar búsqueda">
+          <svg class="icon" viewBox="0 0 16 16" fill="none">
+            <circle cx="6.5" cy="6.5" r="5" stroke="white" stroke-width="1.5"/>
+            <path d="M10.5 10.5L14 14" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="search-panel__overlay js-close-search" tabindex="-1" aria-label="Cerrar búsqueda"></div>
+
+  </div>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="main">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="hero__content">
+          <p class="hero__eyebrow">La aseguradora más sólida de México</p>
+          <h1 class="hero__headline">Protege lo que<br>más importa</h1>
+          <p class="hero__subtext">Con más de 130 años de experiencia, ofrecemos seguros de vida y gastos médicos diseñados para proteger a tu familia con la mayor solidez financiera del mercado.</p>
+          <div class="hero__actions">
+            <a href="#" class="btn btn--primary">Cotiza ahora</a>
+            <a href="#" class="btn btn--outline">Encuentra un asesor</a>
+          </div>
+        </div>
+        <div class="hero__media">
+          <div class="hero__img-placeholder"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Productos -->
+    <section class="products" id="productos">
+      <div class="products__inner">
+        <h2 class="products__title">Nuestros seguros</h2>
+        <div class="products__grid">
+
+          <a href="#" class="product-card">
+            <div class="product-card__tag">Individuales</div>
+            <h3 class="product-card__name">Seguros de Vida</h3>
+            <p class="product-card__desc">Protección financiera para tu familia ante cualquier eventualidad, con cobertura temporal o permanente.</p>
+            <span class="product-card__link">
+              Ver planes
+              <svg class="icon icon--arrow-sm" viewBox="0 0 8 14" fill="none">
+                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+
+          <a href="#" class="product-card">
+            <div class="product-card__tag">Individuales</div>
+            <h3 class="product-card__name">Gastos Médicos Mayores</h3>
+            <p class="product-card__desc">Cobertura médica integral con la más amplia red hospitalaria en todo el país y en el extranjero.</p>
+            <span class="product-card__link">
+              Ver planes
+              <svg class="icon icon--arrow-sm" viewBox="0 0 8 14" fill="none">
+                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+
+          <a href="#" class="product-card">
+            <div class="product-card__tag">Grupales</div>
+            <h3 class="product-card__name">Seguros Grupales</h3>
+            <p class="product-card__desc">Soluciones de protección colectiva para empresas y sus colaboradores, adaptadas a cada organización.</p>
+            <span class="product-card__link">
+              Ver planes
+              <svg class="icon icon--arrow-sm" viewBox="0 0 8 14" fill="none">
+                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust stats -->
+    <section class="trust">
+      <div class="trust__inner">
+        <div class="trust__stat">
+          <span class="trust__value">130+</span>
+          <span class="trust__label">Años de experiencia</span>
+        </div>
+        <div class="trust__divider" aria-hidden="true"></div>
+        <div class="trust__stat">
+          <span class="trust__value">A++</span>
+          <span class="trust__label">Calificación A.M. Best</span>
+        </div>
+        <div class="trust__divider" aria-hidden="true"></div>
+        <div class="trust__stat">
+          <span class="trust__value">3M+</span>
+          <span class="trust__label">Clientes protegidos</span>
+        </div>
+        <div class="trust__divider" aria-hidden="true"></div>
+        <div class="trust__stat">
+          <span class="trust__value">AAA</span>
+          <span class="trust__label">Calificación Fitch</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agentes -->
+    <section class="agents">
+      <div class="agents__inner">
+        <div class="agents__content">
+          <h2 class="agents__title">Conecta con un asesor</h2>
+          <p class="agents__text">Nuestros asesores certificados te guían para encontrar el seguro ideal para tus necesidades y las de tu familia, sin compromisos.</p>
+          <a href="#" class="btn btn--primary">Encuentra tu asesor</a>
+        </div>
+        <div class="agents__media" aria-hidden="true"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+
+      <div class="footer__columns">
+
+        <!-- Col 1: Seguros grupales + Individuales -->
+        <div class="footer__col">
+          <h3 class="footer__col-title">Seguros Grupales</h3>
+          <ul class="footer__links">
+            <li><a href="#">Vida Grupal</a></li>
+            <li><a href="#">GMM Grupal</a></li>
+          </ul>
+          <h3 class="footer__col-title footer__col-title--spaced">Seguros Individuales</h3>
+          <ul class="footer__links">
+            <li><a href="#">Seguros de Vida</a></li>
+            <li><a href="#">Gastos Médicos Mayores</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2: Únete -->
+        <div class="footer__col">
+          <h3 class="footer__col-title">Únete</h3>
+          <ul class="footer__links">
+            <li><a href="#">Sé asesor SMNYL</a></li>
+            <li><a href="#">Bolsa de trabajo</a></li>
+            <li><a href="#">Área corporativa</a></li>
+            <li><a href="#">Responsabilidad social</a></li>
+            <li><a href="#">Proveedores</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Ayuda + Conócenos -->
+        <div class="footer__col">
+          <h3 class="footer__col-title">Ayuda</h3>
+          <ul class="footer__links">
+            <li><a href="#">Centro de ayuda</a></li>
+            <li><a href="#">Reportar siniestro</a></li>
+            <li><a href="#">Estado de póliza</a></li>
+            <li><a href="#">Documentos</a></li>
+            <li><a href="#">Reembolsos</a></li>
+            <li><a href="#">Hospitales participantes</a></li>
+          </ul>
+          <h3 class="footer__col-title footer__col-title--spaced">Conócenos</h3>
+          <ul class="footer__links">
+            <li><a href="#">Sobre SMNYL</a></li>
+            <li><a href="#">Solidez financiera</a></li>
+            <li><a href="#">Sustentabilidad</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Suscríbete + Social + Badges -->
+        <div class="footer__col footer__col--subscribe">
+          <h3 class="footer__col-title">Suscríbete</h3>
+          <div class="subscribe-form">
+            <input type="email" class="subscribe-input" placeholder="Tu correo electrónico" aria-label="Correo electrónico">
+            <button class="subscribe-btn" aria-label="Suscribirse">
+              <svg class="icon" viewBox="0 0 22 22" fill="none">
+                <path d="M5 11H17M17 11L11 5M17 11L11 17" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="footer__social">
+            <!-- Facebook -->
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <!-- X / Twitter -->
+            <a href="#" class="social-icon" aria-label="X / Twitter">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.6.75h2.454L9.725 6.995 16 15.25h-4.014L7.769 10.22 3.29 15.25H.832l5.608-6.77L0 .75h4.122l3.558 5.094L12.6.75zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633z" fill="white"/>
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="1.5"/>
+                <circle cx="12" cy="12" r="5" stroke="white" stroke-width="1.5"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="white"/>
+              </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="#" class="social-icon" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="2" y="9" width="4" height="12" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="4" cy="4" r="2" stroke="white" stroke-width="1.5"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="footer__badges">
+            <div class="badge-item" aria-label="Distintivo Las Mejores Empresas">Las Mejores<br>Empresas</div>
+            <div class="badge-item" aria-label="Buró de Entidades Financieras">Buró de<br>Entidades</div>
+            <div class="badge-item" aria-label="CONDUSEF">CONDUSEF</div>
+          </div>
+        </div>
+
+      </div><!-- /footer__columns -->
+
+      <hr class="footer__rule">
+
+      <div class="footer__bottom">
+        <a href="tel:8009062100" class="footer__phone">800 906 2100</a>
+        <span class="footer__copyright">© 2026 Seguros Monterrey New York Life, S.A. de C.V.</span>
+        <nav class="footer__legal" aria-label="Avisos legales">
+          <a href="#">Aviso de Privacidad</a>
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">SMNYL</a>
+        </nav>
+      </div>
+
+    </div><!-- /footer__inner -->
+  </footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>
