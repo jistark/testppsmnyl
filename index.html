@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-MX">
+<html lang="es-MX" style="scroll-padding-top: 80px;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,33 +12,44 @@
 <body>
 
   <!-- ===================== HEADER ===================== -->
-  <header class="header" id="header">
+  <header class="header" id="header" data-enable-sticky="true">
     <div class="header__inner">
 
       <a href="/" class="header__logo" aria-label="Seguros Monterrey New York Life">
-        <div class="logo-box">
-          <span class="logo-text">SMNYL</span>
-        </div>
+        <div class="logo-box"><span class="logo-text">SMNYL</span></div>
       </a>
 
+      <!-- Nav principal (L1 triggers) -->
       <nav class="header__nav-main" aria-label="Navegación principal">
-        <button class="nav-item js-menu-trigger" data-menu="individuales" aria-expanded="false" aria-controls="megaMenu">
+        <button class="nav-item js-menu-trigger" data-menu="individuales"
+                aria-expanded="false" aria-controls="megaMenu" type="button">
           Seguros individuales
         </button>
-        <button class="nav-item js-menu-trigger" data-menu="grupales" aria-expanded="false" aria-controls="megaMenu">
+        <button class="nav-item js-menu-trigger" data-menu="grupales"
+                aria-expanded="false" aria-controls="megaMenu" type="button">
           Seguros grupales
         </button>
-        <a href="#" class="nav-item nav-item--link">Conócenos</a>
-        <a href="#" class="nav-item nav-item--link">Únete</a>
+        <a href="#conocenos" class="nav-item nav-item--link">Conócenos</a>
+        <a href="#unete"     class="nav-item nav-item--link">Únete</a>
       </nav>
 
-      <nav class="header__nav-alt" aria-label="Navegación secundaria">
-        <a href="#" class="nav-item-alt">Ayuda y contacto</a>
-        <a href="#" class="nav-item-alt">Documentos</a>
-        <a href="#" class="nav-item-alt">Mi SMNYL Clientes</a>
-        <a href="#" class="nav-item-alt">Mi SMNYL Asesores</a>
-        <button class="search-trigger js-search-trigger" aria-label="Buscar" aria-expanded="false" aria-controls="searchPanel">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Nav secundaria -->
+      <nav class="header__nav-alt" aria-label="Utilidades">
+        <a href="#ayuda"       class="nav-item-alt">Ayuda y contacto</a>
+        <a href="#documentos"  class="nav-item-alt">Documentos</a>
+
+        <!-- Mi SMNYL → abre login drawer -->
+        <button class="nav-item-alt nav-item-alt--account js-login-trigger"
+                type="button" aria-expanded="false" aria-controls="loginPanel"
+                aria-label="Mi SMNYL, iniciar sesión">
+          Mi SMNYL
+        </button>
+
+        <!-- Búsqueda → abre search panel -->
+        <button class="search-trigger js-search-trigger"
+                type="button" aria-expanded="false" aria-controls="searchPanel"
+                aria-label="Buscar">
+          <svg class="icon" viewBox="0 0 24 24" fill="none">
             <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2"/>
             <path d="M15.5 15.5L20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
@@ -49,50 +60,70 @@
   </header>
 
   <!-- ===================== MEGA MENU ===================== -->
-  <div class="mega-menu" id="megaMenu" aria-hidden="true">
+  <div class="mega-menu" id="megaMenu" aria-hidden="true" role="dialog" aria-modal="false">
 
-    <!-- Sidebar L1 (blanco) -->
+    <!-- Sidebar L1 — blanco -->
     <div class="sidebar sidebar--l1">
       <h6 class="sidebar__title js-menu-title">Seguros individuales</h6>
-      <ul class="sidebar__nav" id="sidebarL1Nav"></ul>
+      <ul class="sidebar__nav" id="sidebarL1Nav" role="list"></ul>
       <div class="sidebar__cta">
         <div class="sidebar__cta-rule"></div>
         <p class="sidebar__cta-title">Cuenta con un seguro adecuado a tus objetivos</p>
         <p class="sidebar__cta-desc">Nuestros asesores te ayudan a encontrar el plan perfecto para ti y tu familia.</p>
-        <a href="#" class="cta-link">
+        <a href="#" class="btn btn--text">
           Me interesa
           <svg class="icon icon--arrow-long" viewBox="0 0 26 14" fill="none">
-            <path d="M0 7H24M24 7L18 1.5M24 7L18 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M0 7H24M24 7L18 1.5M24 7L18 12.5" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
       </div>
     </div>
 
-    <!-- Sidebar L2 (arena) -->
+    <!-- Sidebar L2 — arena -->
     <div class="sidebar sidebar--l2" id="sidebarL2" aria-hidden="true">
+      <!-- Botones de control mobile -->
+      <div class="drawer-mobile-controls">
+        <button class="drawer-back js-drawer-back" type="button" aria-label="Regresar">
+          <svg class="icon" viewBox="0 0 8 14" fill="none">
+            <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Regresar
+        </button>
+        <button class="drawer-close js-close-menu" type="button" aria-label="Cerrar menú">
+          <svg class="icon" viewBox="0 0 14 14" fill="none">
+            <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
       <div id="sidebarL2Content" class="sidebar__inner"></div>
     </div>
 
     <!-- Overlay -->
-    <div class="mega-menu__overlay js-close-menu" tabindex="-1" aria-label="Cerrar menú"></div>
-
+    <div class="mega-menu__overlay js-close-menu" tabindex="-1" aria-hidden="true"></div>
   </div>
 
   <!-- ===================== SEARCH PANEL ===================== -->
-  <div class="search-panel" id="searchPanel" aria-hidden="true">
+  <div class="search-panel" id="searchPanel" aria-hidden="true"
+       role="dialog" aria-modal="true" aria-label="Búsqueda">
 
     <div class="sidebar sidebar--search">
       <h6 class="sidebar__title">Búsqueda</h6>
       <div class="search-input-group">
-        <input
-          type="text"
-          class="search-input"
-          id="searchInput"
-          placeholder="¿Cómo te ayudamos hoy?"
-          aria-label="Buscar"
-          autocomplete="off"
-        >
-        <button class="search-btn" aria-label="Realizar búsqueda">
+        <input type="text" class="search-input" id="searchInput"
+               placeholder="¿Cómo te ayudamos hoy?"
+               aria-label="Buscar" autocomplete="off">
+        <!-- Clear button — aparece cuando hay texto -->
+        <button class="search-clear js-search-clear" type="button"
+                aria-label="Limpiar búsqueda" hidden>
+          <svg class="icon" viewBox="0 0 14 14" fill="none">
+            <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="search-btn" type="submit" aria-label="Realizar búsqueda">
           <svg class="icon" viewBox="0 0 16 16" fill="none">
             <circle cx="6.5" cy="6.5" r="5" stroke="white" stroke-width="1.5"/>
             <path d="M10.5 10.5L14 14" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
@@ -101,12 +132,70 @@
       </div>
     </div>
 
-    <div class="search-panel__overlay js-close-search" tabindex="-1" aria-label="Cerrar búsqueda"></div>
+    <div class="search-panel__overlay js-close-search" tabindex="-1" aria-hidden="true"></div>
+  </div>
 
+  <!-- ===================== LOGIN / MI SMNYL PANEL ===================== -->
+  <div class="login-panel" id="loginPanel" aria-hidden="true"
+       role="dialog" aria-modal="true" aria-labelledby="loginPanelTitle">
+
+    <div class="sidebar sidebar--login">
+      <div class="login-panel__header">
+        <div>
+          <p class="login-panel__eyebrow">Mi SMNYL</p>
+          <h2 class="login-panel__title" id="loginPanelTitle">Inicia sesión</h2>
+        </div>
+        <button class="login-panel__close js-close-login" type="button"
+                aria-label="Cerrar panel de inicio de sesión">
+          <svg class="icon" viewBox="0 0 14 14" fill="none">
+            <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <form class="login-form" id="loginForm" novalidate>
+        <div class="login-form__field">
+          <label class="login-form__label" for="loginUsername">Usuario</label>
+          <input class="login-form__input" id="loginUsername" type="text"
+                 name="username" required maxlength="50"
+                 autocomplete="username" aria-label="Usuario">
+        </div>
+        <div class="login-form__field">
+          <label class="login-form__label" for="loginPassword">Contraseña</label>
+          <input class="login-form__input" id="loginPassword" type="password"
+                 name="password" required maxlength="100"
+                 autocomplete="current-password" aria-label="Contraseña">
+        </div>
+        <div class="login-form__remember">
+          <label class="custom-checkbox">
+            <input type="checkbox" id="loginRemember" name="remember">
+            <span class="custom-checkbox__box" aria-hidden="true"></span>
+            <span class="custom-checkbox__label">Recordar usuario</span>
+          </label>
+        </div>
+        <button class="btn btn--primary login-form__submit" id="loginSubmitBtn"
+                type="submit" disabled aria-label="Iniciar sesión">
+          Iniciar sesión
+        </button>
+        <a href="#" class="login-form__trouble">¿Problemas para iniciar sesión?</a>
+      </form>
+
+      <div class="login-panel__divider">
+        <span>o</span>
+      </div>
+
+      <div class="login-panel__alt">
+        <p class="login-panel__alt-text">¿Eres asesor?</p>
+        <a href="#" class="btn btn--outline btn--sm">Acceso asesores</a>
+      </div>
+    </div>
+
+    <div class="login-panel__overlay js-close-login" tabindex="-1" aria-hidden="true"></div>
   </div>
 
   <!-- ===================== MAIN ===================== -->
-  <main class="main">
+  <main class="main" id="main">
 
     <!-- Hero -->
     <section class="hero">
@@ -114,56 +203,153 @@
         <div class="hero__content">
           <p class="hero__eyebrow">La aseguradora más sólida de México</p>
           <h1 class="hero__headline">Protege lo que<br>más importa</h1>
-          <p class="hero__subtext">Con más de 130 años de experiencia, ofrecemos seguros de vida y gastos médicos diseñados para proteger a tu familia con la mayor solidez financiera del mercado.</p>
-          <div class="hero__actions">
-            <a href="#" class="btn btn--primary">Cotiza ahora</a>
-            <a href="#" class="btn btn--outline">Encuentra un asesor</a>
+          <div class="hero__description">
+            <p>Con más de 130 años de experiencia, ofrecemos seguros de vida y gastos médicos diseñados para proteger a tu familia con la mayor solidez financiera del mercado.</p>
+          </div>
+          <div class="hero__cta">
+            <a href="#productos" class="btn btn--primary">Cotiza ahora</a>
+            <a href="#agentes"   class="btn btn--outline">Encuentra un asesor</a>
           </div>
         </div>
-        <div class="hero__media">
-          <div class="hero__img-placeholder"></div>
+        <div class="hero__media" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 575px)"  srcset="assets/hero-mobile.jpg">
+            <source media="(max-width: 1023px)" srcset="assets/hero-tablet.jpg">
+            <div class="hero__img-placeholder"></div>
+          </picture>
         </div>
       </div>
     </section>
 
-    <!-- Productos -->
+    <!-- ¿Cómo te ayudamos? (link list pattern) -->
+    <section class="howhelp" id="como-te-ayudamos">
+      <div class="howhelp__inner">
+        <h2 class="howhelp__title">¿Cómo te ayudamos?</h2>
+        <div class="howhelp__grid">
+
+          <div class="link-list">
+            <h3 class="link-list__title">Guía personalizada</h3>
+            <ul class="link-list__items">
+              <li>
+                <a href="#agentes">
+                  Encuentra tu asesor
+                  <p class="link-list__desc">Conecta con un asesor certificado en tu zona.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Planeación financiera
+                  <p class="link-list__desc">Herramientas para proyectar tu futuro financiero.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Calculadora de seguros
+                  <p class="link-list__desc">Estima la cobertura que necesitas para tu familia.</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="link-list">
+            <h3 class="link-list__title">Gestiona tu póliza</h3>
+            <ul class="link-list__items">
+              <li>
+                <a href="#">
+                  Estado de póliza
+                  <p class="link-list__desc">Consulta los detalles de tu cobertura activa.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Realizar un pago
+                  <p class="link-list__desc">Paga tu prima de forma rápida y segura.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Solicitar reembolso
+                  <p class="link-list__desc">Inicia tu proceso de reembolso de gastos médicos.</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="link-list">
+            <h3 class="link-list__title">Centro de ayuda</h3>
+            <ul class="link-list__items">
+              <li>
+                <a href="#">
+                  Reportar un siniestro
+                  <p class="link-list__desc">Notifica un siniestro de forma fácil y rápida.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Hospitales participantes
+                  <p class="link-list__desc">Encuentra la red de hospitales con convenio.</p>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Preguntas frecuentes
+                  <p class="link-list__desc">Respuestas a las dudas más comunes.</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Nuestros productos -->
     <section class="products" id="productos">
       <div class="products__inner">
         <h2 class="products__title">Nuestros seguros</h2>
         <div class="products__grid">
 
           <a href="#" class="product-card">
-            <div class="product-card__tag">Individuales</div>
+            <p class="product-card__pretitle">Individuales</p>
             <h3 class="product-card__name">Seguros de Vida</h3>
-            <p class="product-card__desc">Protección financiera para tu familia ante cualquier eventualidad, con cobertura temporal o permanente.</p>
-            <span class="product-card__link">
+            <div class="product-card__desc">
+              <p>Protección financiera para tu familia ante cualquier eventualidad, con cobertura temporal o permanente.</p>
+            </div>
+            <span class="product-card__link btn btn--text">
               Ver planes
               <svg class="icon icon--arrow-sm" viewBox="0 0 8 14" fill="none">
-                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </span>
           </a>
 
           <a href="#" class="product-card">
-            <div class="product-card__tag">Individuales</div>
+            <p class="product-card__pretitle">Individuales</p>
             <h3 class="product-card__name">Gastos Médicos Mayores</h3>
-            <p class="product-card__desc">Cobertura médica integral con la más amplia red hospitalaria en todo el país y en el extranjero.</p>
-            <span class="product-card__link">
+            <div class="product-card__desc">
+              <p>Cobertura médica integral con la más amplia red hospitalaria en México y en el extranjero.</p>
+            </div>
+            <span class="product-card__link btn btn--text">
               Ver planes
               <svg class="icon icon--arrow-sm" viewBox="0 0 8 14" fill="none">
-                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </span>
           </a>
 
           <a href="#" class="product-card">
-            <div class="product-card__tag">Grupales</div>
+            <p class="product-card__pretitle">Grupales</p>
             <h3 class="product-card__name">Seguros Grupales</h3>
-            <p class="product-card__desc">Soluciones de protección colectiva para empresas y sus colaboradores, adaptadas a cada organización.</p>
-            <span class="product-card__link">
+            <div class="product-card__desc">
+              <p>Soluciones de protección colectiva para empresas y sus colaboradores, adaptadas a cada organización.</p>
+            </div>
+            <span class="product-card__link btn btn--text">
               Ver planes
               <svg class="icon icon--arrow-sm" viewBox="0 0 8 14" fill="none">
-                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </span>
           </a>
@@ -198,9 +384,10 @@
     </section>
 
     <!-- Agentes -->
-    <section class="agents">
+    <section class="agents" id="agentes">
       <div class="agents__inner">
         <div class="agents__content">
+          <p class="agents__eyebrow">Red nacional</p>
           <h2 class="agents__title">Conecta con un asesor</h2>
           <p class="agents__text">Nuestros asesores certificados te guían para encontrar el seguro ideal para tus necesidades y las de tu familia, sin compromisos.</p>
           <a href="#" class="btn btn--primary">Encuentra tu asesor</a>
@@ -217,7 +404,7 @@
 
       <div class="footer__columns">
 
-        <!-- Col 1: Seguros grupales + Individuales -->
+        <!-- Col 1 -->
         <div class="footer__col">
           <h3 class="footer__col-title">Seguros Grupales</h3>
           <ul class="footer__links">
@@ -231,7 +418,7 @@
           </ul>
         </div>
 
-        <!-- Col 2: Únete -->
+        <!-- Col 2 -->
         <div class="footer__col">
           <h3 class="footer__col-title">Únete</h3>
           <ul class="footer__links">
@@ -243,7 +430,7 @@
           </ul>
         </div>
 
-        <!-- Col 3: Ayuda + Conócenos -->
+        <!-- Col 3 -->
         <div class="footer__col">
           <h3 class="footer__col-title">Ayuda</h3>
           <ul class="footer__links">
@@ -262,53 +449,98 @@
           </ul>
         </div>
 
-        <!-- Col 4: Suscríbete + Social + Badges -->
+        <!-- Col 4: Suscríbete -->
         <div class="footer__col footer__col--subscribe">
           <h3 class="footer__col-title">Suscríbete</h3>
-          <div class="subscribe-form">
-            <input type="email" class="subscribe-input" placeholder="Tu correo electrónico" aria-label="Correo electrónico">
-            <button class="subscribe-btn" aria-label="Suscribirse">
-              <svg class="icon" viewBox="0 0 22 22" fill="none">
-                <path d="M5 11H17M17 11L11 5M17 11L11 17" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
 
+          <!-- Email subscribe con 3 estados -->
+          <div class="cmp-email-subscribe" id="emailSubscribe">
+
+            <!-- Estado: form (default) -->
+            <div class="cmp-email-subscribe__content" id="subscribeForm">
+              <form novalidate id="subscribeFormEl">
+                <div class="subscribe-input-group">
+                  <label for="subscribeInput" class="sr-only">Correo electrónico</label>
+                  <input type="email" id="subscribeInput" name="email"
+                         class="subscribe-input" placeholder="Tu correo electrónico"
+                         required aria-describedby="subscribeError">
+                  <button class="subscribe-btn" type="submit" aria-label="Suscribirse">
+                    <!-- Arrow (default) -->
+                    <svg class="subscribe-btn__arrow" viewBox="0 0 22 22" fill="none">
+                      <path d="M5 11H17M17 11L11 5M17 11L11 17" stroke="white"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <!-- Spinner (loading) -->
+                    <span class="subscribe-btn__spinner" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <!-- Errores -->
+                <div class="subscribe-errors" role="alert" aria-live="polite">
+                  <p class="subscribe-error subscribe-error--client" id="subscribeError" hidden>
+                    Por favor ingresa un correo electrónico válido.
+                  </p>
+                  <p class="subscribe-error subscribe-error--server" hidden>
+                    Ocurrió un error. Intenta de nuevo más tarde.
+                  </p>
+                </div>
+              </form>
+            </div>
+
+            <!-- Estado: éxito -->
+            <div class="cmp-email-subscribe__success" id="subscribeSuccess" hidden
+                 role="status" aria-live="polite">
+              <svg class="subscribe-success__icon" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" fill="#22C55E"/>
+                <path d="M7 12L10.5 15.5L17 9" stroke="white" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <p>¡Gracias por suscribirte!</p>
+            </div>
+
+          </div><!-- /cmp-email-subscribe -->
+
+          <!-- Redes sociales -->
           <div class="footer__social">
-            <!-- Facebook -->
-            <a href="#" class="social-icon" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <a href="https://facebook.com" class="social-icon" target="_blank"
+               rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                      stroke="white" stroke-width="1.5" fill="none"
+                      stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </a>
-            <!-- X / Twitter -->
-            <a href="#" class="social-icon" aria-label="X / Twitter">
-              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.6.75h2.454L9.725 6.995 16 15.25h-4.014L7.769 10.22 3.29 15.25H.832l5.608-6.77L0 .75h4.122l3.558 5.094L12.6.75zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633z" fill="white"/>
+            <a href="https://x.com" class="social-icon" target="_blank"
+               rel="noopener noreferrer" aria-label="X / Twitter">
+              <svg viewBox="0 0 16 16" fill="none">
+                <path d="M12.6.75h2.454L9.725 6.995 16 15.25h-4.014L7.769 10.22 3.29 15.25H.832l5.608-6.77L0 .75h4.122l3.558 5.094L12.6.75zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633z"
+                      fill="white"/>
               </svg>
             </a>
-            <!-- Instagram -->
-            <a href="#" class="social-icon" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <a href="https://instagram.com" class="social-icon" target="_blank"
+               rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none">
                 <rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="1.5"/>
                 <circle cx="12" cy="12" r="5" stroke="white" stroke-width="1.5"/>
                 <circle cx="17.5" cy="6.5" r="1" fill="white"/>
               </svg>
             </a>
-            <!-- LinkedIn -->
-            <a href="#" class="social-icon" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <rect x="2" y="9" width="4" height="12" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <a href="https://linkedin.com" class="social-icon" target="_blank"
+               rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"
+                      stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="2" y="9" width="4" height="12" stroke="white" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
                 <circle cx="4" cy="4" r="2" stroke="white" stroke-width="1.5"/>
               </svg>
             </a>
           </div>
 
+          <!-- Trust badges -->
           <div class="footer__badges">
-            <div class="badge-item" aria-label="Distintivo Las Mejores Empresas">Las Mejores<br>Empresas</div>
-            <div class="badge-item" aria-label="Buró de Entidades Financieras">Buró de<br>Entidades</div>
-            <div class="badge-item" aria-label="CONDUSEF">CONDUSEF</div>
+            <div class="badge-item">Las Mejores<br>Empresas</div>
+            <div class="badge-item">Buró de<br>Entidades</div>
+            <div class="badge-item">CONDUSEF</div>
           </div>
         </div>
 
