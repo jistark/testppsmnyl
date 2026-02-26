@@ -967,21 +967,24 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 }
 
 .footer__bottom {
-  display: flex; align-items: center; gap: 24px; padding-bottom: 32px; flex-wrap: wrap;
+  display: flex; align-items: flex-start; gap: 24px; padding-bottom: 32px;
 }
 
 .footer__phone {
   font-family: var(--f-body); font-weight: 700;
   font-size: 16px; line-height: 19px; color: var(--c-white); text-decoration: none;
+  padding-top: 2px;
 }
 .footer__phone:hover { text-decoration: underline; }
 
+.footer__bottom-right { display: flex; flex-direction: column; gap: 10px; }
+
 .footer__copyright {
   font-family: var(--f-body); font-weight: 700;
-  font-size: 14px; line-height: 16px; color: var(--c-white); margin-left: auto;
+  font-size: 14px; line-height: 16px; color: var(--c-white);
 }
 
-.footer__legal { display: flex; gap: 16px; }
+.footer__legal { display: flex; gap: 16px; flex-wrap: wrap; }
 
 .footer__legal a {
   font-family: var(--f-body); font-weight: 400;
