@@ -942,15 +942,23 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .social-icon svg { width: 20px; height: 20px; }
 
 /* Trust badges */
-.footer__badges { display: flex; gap: 12px; flex-wrap: wrap; }
+.footer__badges { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 16px; }
 
-.badge-item {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.2); border-radius: 3px;
-  padding: 8px 10px;
-  font-family: var(--f-body); font-weight: 700;
-  font-size: 10px; line-height: 12px;
-  color: var(--c-white); white-space: nowrap; text-align: center;
+.badge-item { display: block; overflow: hidden; line-height: 0; }
+
+.badge-item--gptw { width: 60px; height: 60px; border-radius: 4px; }
+.badge-item--gptw img { width: 100%; height: 100%; object-fit: contain; }
+
+.badge-item--buro { width: 45px; height: 44px; border-radius: 4px; }
+.badge-item--buro img { width: 100%; height: 100%; object-fit: contain; }
+
+/* CONDUSEF: 125×68 crop of square source image — replicate Figma offset */
+.badge-item--condusef { position: relative; width: 125px; height: 68px; }
+.badge-item--condusef img {
+  position: absolute;
+  left: -20.85%; top: -80.84%;
+  width: 146.58%; height: 269.46%;
+  object-fit: cover;
 }
 
 /* Footer bottom */
