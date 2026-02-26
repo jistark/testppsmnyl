@@ -202,205 +202,215 @@
     <div class="login-panel__overlay js-close-login" tabindex="-1" aria-hidden="true"></div>
   </div>
 
+  <!-- NYL brand clip-paths (hidden) -->
+  <div style="width:0;height:0;overflow:hidden;position:absolute;" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1 1">
+      <clipPath id="hero-clip" clipPathUnits="objectBoundingBox">
+        <path d="M.0062,0h.8506c.0028,0,.0053.0026.006.0064l.1368.6982c.0003.0015.0004.003.0004.0046v.2821c0,.0048-.0028.0087-.0062.0087h-.3876c-.0013,0-.0025-.0003-.0037-.0008L.0044.7382C.0018.7371,0,.7337,0,.7299V.0087C0,.0039.0028,0,.0062,0Z"/>
+      </clipPath>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1 1">
+      <clipPath id="products-clip-lg" clipPathUnits="objectBoundingBox">
+        <path d="M.0028,0h.5627s.0005,0,.0008.0001l.4313.1235c.0014.0004.0024.0028.0024.0056v.8651c0,.0031-.0012.0056-.0028.0056H.0826c-.0014,0-.0028-.0011-.0038-.003L.0018.8508c-.0011-.0021-.0018-.0051-.0018-.0083V.0056c0-.0031.0012-.0056.0028-.0056Z"/>
+      </clipPath>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1 1">
+      <clipPath id="products-clip-sm" clipPathUnits="objectBoundingBox">
+        <path d="M.0106,0h.574C.5864,0,.5882,0,.5899.0002l.4022.0259c.0047.0003.008.0014.008.0026v.9687c0,.0015-.0047.0027-.0106.0027H.1708c-.0044,0-.0087-.0003-.0122-.001l-.1496-.0267c-.0056-.001-.0089-.0026-.0089-.0043V.0027C0,.0012.0047,0,.0106,0Z"/>
+      </clipPath>
+    </svg>
+  </div>
+
   <!-- ===================== MAIN ===================== -->
   <main class="main" id="main">
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero__inner">
-        <div class="hero__content">
-          <p class="hero__eyebrow">La aseguradora más sólida de México</p>
-          <h1 class="hero__headline">Protege lo que<br>más importa</h1>
-          <div class="hero__description">
-            <p>Con más de 130 años de experiencia, ofrecemos seguros de vida y gastos médicos diseñados para proteger a tu familia con la mayor solidez financiera del mercado.</p>
+    <!-- §1 HERO (cmp-hero__billboard) ---------------------- -->
+    <section class="cmp-hero__billboard">
+      <div class="cmp-hero__image" aria-hidden="true">
+        <div class="hero__img-placeholder"></div>
+      </div>
+      <div class="cmp-hero__container">
+        <div class="cmp-hero__content">
+          <h1 class="cmp-hero__title">
+            <span class="cmp-hero__pretitle">La aseguradora más confiable de México</span>
+            Siempre contigo, protegiéndote mejor cada día
+          </h1>
+          <div class="cmp-hero__description">
+            <p>Con 75 años en México y el respaldo de New York Life, seguros de vida y gastos médicos para proteger lo que más amas.</p>
           </div>
-          <div class="hero__cta">
-            <a href="#productos" class="btn btn--primary">Cotiza ahora</a>
-            <a href="#agentes"   class="btn btn--outline">Encuentra un asesor</a>
+          <div class="cmp-hero__cta">
+            <a href="#" class="btn btn--primary">Cotiza tu seguro</a>
+            <a href="#" class="btn btn--outline">Encuentra un asesor</a>
           </div>
-        </div>
-        <div class="hero__media" aria-hidden="true">
-          <picture>
-            <source media="(max-width: 575px)"  srcset="assets/hero-mobile.jpg">
-            <source media="(max-width: 1023px)" srcset="assets/hero-tablet.jpg">
-            <div class="hero__img-placeholder"></div>
-          </picture>
         </div>
       </div>
     </section>
 
-    <!-- ¿Cómo te ayudamos? (link list pattern) -->
+    <!-- §2 BRAND PROMISE STRIP ----------------------------- -->
+    <section class="brand-promise">
+      <div class="brand-promise__inner">
+        <p class="brand-promise__text">75 años junto a las familias mexicanas · Con el respaldo de New York Life</p>
+        <a href="#" class="brand-promise__link">
+          Conoce nuestra historia
+          <span class="arrow-icon" aria-hidden="true"><span class="arrow"></span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- §3 ¿CÓMO TE AYUDAMOS? (feature cards) -------------- -->
     <section class="howhelp" id="como-te-ayudamos">
       <div class="howhelp__inner">
+        <p class="howhelp__eyebrow">Guía Personalizada</p>
         <h2 class="howhelp__title">¿Cómo te ayudamos?</h2>
+        <p class="howhelp__lead">Las decisiones importantes son más fáciles con un especialista a tu lado. Nuestros asesores se toman el tiempo de entender tus metas para que construyas el futuro que imaginas.</p>
+
         <div class="howhelp__grid">
 
-          <div class="link-list">
-            <h3 class="link-list__title">Guía personalizada</h3>
-            <ul class="link-list__items">
-              <li>
-                <a href="#agentes">
-                  Encuentra tu asesor
-                  <p class="link-list__desc">Conecta con un asesor certificado en tu zona.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Planeación financiera
-                  <p class="link-list__desc">Herramientas para proyectar tu futuro financiero.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Calculadora de seguros
-                  <p class="link-list__desc">Estima la cobertura que necesitas para tu familia.</p>
-                </a>
-              </li>
-            </ul>
+          <div class="howhelp__card">
+            <div class="howhelp__card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="40" viewBox="0 0 48 40" width="48" aria-hidden="true"><path d="M29.0263 28.1897C29.4856 27.1972 29.7197 26.1154 29.712 25.0217V22.9029C30.5972 22.069 31.5592 21.3205 32.5851 20.6674C33.0539 21.259 33.649 21.7383 34.3269 22.0701C35.0048 22.4019 35.7484 22.5779 36.5031 22.5851C37.2579 22.5923 38.0047 22.4306 38.6888 22.1119C39.373 21.7931 39.9772 21.3254 40.4571 20.7429C43.4194 22.416 46.4091 25.8309 46.4709 28.6354C46.4709 28.7658 46.4201 28.8911 46.3291 28.9846C46.2382 29.0781 46.1144 29.1324 45.984 29.136C45.7785 29.136 45.5814 29.2176 45.4361 29.363C45.2908 29.5083 45.2091 29.7054 45.2091 29.9109C45.2091 30.1164 45.2908 30.3135 45.4361 30.4588C45.5814 30.6041 45.7785 30.6857 45.984 30.6857C46.5224 30.6749 47.0352 30.4535 47.4121 30.0688C47.789 29.6842 48.0001 29.1671 48 28.6286C47.952 25.2 44.688 21.408 41.3211 19.4537C41.8896 18.3831 42.1863 17.1893 42.1851 15.9771V14.5714C42.1851 10.944 39.6549 7.98172 36.5349 7.98172C33.8537 7.98172 31.5977 10.1829 31.0491 13.1177C30.3672 12.5336 29.6404 12.004 28.8754 11.5337C29.4567 10.448 29.7561 9.23376 29.7463 8.00229V6.58972C29.7463 2.95543 27.216 0 24.096 0C20.976 0 18.4457 2.95543 18.4457 6.58972V8.00229C18.4365 9.26448 18.7555 10.5074 19.3714 11.6091C18.6105 12.0998 17.8863 12.6453 17.2046 13.2411C16.8823 9.95657 14.496 7.39886 11.6091 7.39886C8.50286 7.39886 5.96571 10.3543 5.96571 13.9886V15.4011C5.95743 16.7759 6.33518 18.1254 7.056 19.296C3.91543 21.1269 0 25.104 0 28.8C0 29.3456 0.216734 29.8688 0.602523 30.2546C0.988312 30.6404 1.51155 30.8571 2.05714 30.8571H16.1486C14.2354 32.7291 12.8023 35.088 12.7749 37.4606C12.7749 38.0062 12.9916 38.5294 13.3774 38.9152C13.7632 39.301 14.2864 39.5177 14.832 39.5177H33.6C34.1456 39.5177 34.6688 39.301 35.0546 38.9152C35.4404 38.5294 35.6571 38.0062 35.6571 37.4606C35.6571 35.0949 34.2446 32.6606 32.2971 30.7131H39.1543C39.3421 30.6881 39.5143 30.5957 39.6391 30.4532C39.7639 30.3107 39.8327 30.1277 39.8327 29.9383C39.8327 29.7489 39.7639 29.5659 39.6391 29.4234C39.5143 29.2808 39.3421 29.1885 39.1543 29.1634H31.104L29.0263 28.1897Z" fill="#474952"/></svg>
+            </div>
+            <div class="howhelp__card-content">
+              <h3 class="howhelp__card-title">Seguros a la medida de tu vida</h3>
+              <p class="howhelp__card-body">Vida, salud y protección empresarial diseñados para cada etapa.</p>
+            </div>
           </div>
 
-          <div class="link-list">
-            <h3 class="link-list__title">Gestiona tu póliza</h3>
-            <ul class="link-list__items">
-              <li>
-                <a href="#">
-                  Estado de póliza
-                  <p class="link-list__desc">Consulta los detalles de tu cobertura activa.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Realizar un pago
-                  <p class="link-list__desc">Paga tu prima de forma rápida y segura.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Solicitar reembolso
-                  <p class="link-list__desc">Inicia tu proceso de reembolso de gastos médicos.</p>
-                </a>
-              </li>
-            </ul>
+          <div class="howhelp__card">
+            <div class="howhelp__card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="48" viewBox="0 0 38 48" width="38" aria-hidden="true"><path d="M36.768 24.132H18.2899C18.1788 24.1128 18.0781 24.0551 18.0054 23.9689C17.9328 23.8827 17.893 23.7736 17.893 23.6608C17.893 23.5481 17.9328 23.439 18.0054 23.3528C18.0781 23.2666 18.1788 23.2088 18.2899 23.1897H36.768C36.8574 23.1791 36.9481 23.1943 37.0291 23.2336C37.1101 23.2729 37.1782 23.3346 37.2253 23.4114C37.2728 23.4859 37.298 23.5725 37.298 23.6608C37.298 23.7492 37.2728 23.8357 37.2253 23.9103C37.177 23.9859 37.1087 24.0467 37.028 24.0858C36.9473 24.1249 36.8573 24.1409 36.768 24.132Z" fill="#474952"/><path d="M27.5324 29.9374H18.2899C18.1788 29.9183 18.0781 29.8605 18.0054 29.7743C17.9328 29.6881 17.893 29.579 17.893 29.4663C17.893 29.3536 17.9328 29.2445 18.0054 29.1583C18.0781 29.0721 18.1788 29.0143 18.2899 28.9952H27.5324C27.6208 28.9859 27.7099 29.0018 27.7896 29.041C27.8693 29.0803 27.9363 29.1412 27.9828 29.2169C28.0228 29.2913 28.042 29.3751 28.0385 29.4595C28.035 29.5439 28.0089 29.6258 27.9628 29.6967C27.9168 29.7675 27.8525 29.8247 27.7768 29.8621C27.7011 29.8996 27.6167 29.9161 27.5324 29.9097V29.9374Z" fill="#474952"/><path d="M36.768 41.9096H18.2899C18.1757 41.8957 18.0705 41.8404 17.9942 41.7543C17.918 41.6681 17.8758 41.557 17.8758 41.4419C17.8758 41.3269 17.918 41.2158 17.9942 41.1296C18.0705 41.0435 18.1757 40.9882 18.2899 40.9743H36.768C36.8342 40.9662 36.9013 40.9723 36.965 40.9921C37.0287 41.0119 37.0874 41.045 37.1374 41.0892C37.1873 41.1334 37.2272 41.1877 37.2546 41.2485C37.282 41.3093 37.2962 41.3752 37.2962 41.4419C37.2962 41.5086 37.282 41.5745 37.2546 41.6353C37.2272 41.6962 37.1873 41.7505 37.1374 41.7947C37.0874 41.8389 37.0287 41.872 36.965 41.8918C36.9013 41.9116 36.8342 41.9177 36.768 41.9096Z" fill="#474952"/><path d="M13.0036 13.0255H1.37077C1.27843 13.027 1.18673 13.01 1.10106 12.9755C1.01539 12.941 0.937487 12.8897 0.871927 12.8246C0.805627 12.7596 0.753064 12.682 0.717358 12.5963C0.681652 12.5106 0.663532 12.4186 0.664074 12.3258V0.692979C0.664056 0.600816 0.682425 0.509576 0.718107 0.4246C0.753789 0.339625 0.806066 0.262623 0.871877 0.198102C0.937688 0.133581 1.01571 0.0828393 1.10138 0.048847C1.18704 0.0148547 1.27863-0.00170467 1.37077 0.000138592H13.0036C13.1873 0.000138592 13.3635 0.0731341 13.4935 0.203067C13.6234 0.333 13.6964 0.509226 13.6964 0.692979V12.3258C13.6973 12.4173 13.6801 12.5082 13.6457 12.593C13.6113 12.6779 13.5604 12.7551 13.4959 12.8202C13.4315 12.8852 13.3548 12.9369 13.2703 13.0074C13.1858 13.0074 13.0951 13.0255 13.0036 13.0255ZM2.06361 11.6191H12.2969V1.44125H2.11904L2.06361 11.6191Z" fill="#474952"/><path d="M16.4539 32.751C16.4093 32.7041 16.3555 32.6667 16.296 32.6411C16.2364 32.6156 16.1723 32.6024 16.1075 32.6024C16.0427 32.6024 15.9786 32.6156 15.919 32.6411C15.8595 32.6667 15.8057 32.7041 15.7611 32.751L7.33613 41.0651L5.52782 39.2222C5.42084 39.1254 5.27813 39.0757 5.13316 39.0858C4.98818 39.0958 4.85375 39.1647 4.76159 39.2759C4.66944 39.3871 4.62748 39.5308 4.64517 39.6736C4.66287 39.8165 4.73878 39.9457 4.8554 40.0308L7.01707 42.0836C7.10996 42.1681 7.23097 42.215 7.35656 42.2152C7.47815 42.2157 7.59508 42.1684 7.68219 42.0836L12.2896 37.5247V46.6078H2.11175V36.3954H7.35692C7.54067 36.3954 7.71689 36.3224 7.84683 36.1924C7.97676 36.0625 8.04976 35.8863 8.04976 35.7025C8.04976 35.5188 7.97676 35.3425 7.84683 35.2126C7.71689 35.0827 7.54067 35.0097 7.35692 35.0097H1.37077C1.18702 35.0097 1.01079 35.0827 0.880858 35.2126C0.750925 35.3425 0.67793 35.5188 0.67793 35.7025V47.3007C0.676451 47.4947 0.75417 47.6808 0.892524 47.8151C1.03088 47.9494 1.21879 48.0208 1.41277 48.0074H13.0036C13.1873 48.0074 13.3635 47.9344 13.4935 47.8044C13.6234 47.6745 13.6964 47.4983 13.6964 47.3145V36.1321L16.4678 33.4161C16.5598 33.3215 16.6113 33.1942 16.6113 33.0614C16.6113 32.9286 16.5598 32.8013 16.4678 32.7067L16.4539 32.751Z" fill="#474952"/></svg>
+            </div>
+            <div class="howhelp__card-content">
+              <h3 class="howhelp__card-title">Atención humana y cercana</h3>
+              <p class="howhelp__card-body">Asesores certificados que te acompañan cuando más lo necesitas.</p>
+            </div>
           </div>
 
-          <div class="link-list">
-            <h3 class="link-list__title">Centro de ayuda</h3>
-            <ul class="link-list__items">
-              <li>
-                <a href="#">
-                  Reportar un siniestro
-                  <p class="link-list__desc">Notifica un siniestro de forma fácil y rápida.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Hospitales participantes
-                  <p class="link-list__desc">Encuentra la red de hospitales con convenio.</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Preguntas frecuentes
-                  <p class="link-list__desc">Respuestas a las dudas más comunes.</p>
-                </a>
-              </li>
-            </ul>
+          <div class="howhelp__card">
+            <div class="howhelp__card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="44" viewBox="0 0 49 44" width="49" aria-hidden="true"><path d="M5.07312 22.6549C2.96542 20.336 1.83649 17.2917 1.92267 14.1593C1.92267 7.2 7.19701 1.53628 13.6678 1.53628C15.6973 1.57846 17.6803 2.15167 19.4193 3.1988C21.1583 4.24593 22.5926 5.73043 23.5793 7.50443C23.6529 7.61991 23.7543 7.71499 23.8744 7.78085C23.9944 7.84672 24.1291 7.88125 24.266 7.88125C24.403 7.88125 24.5377 7.84672 24.6577 7.78085C24.7777 7.71499 24.8792 7.61991 24.9528 7.50443C25.9397 5.72149 27.3813 4.2319 29.1311 3.18728C30.8808 2.14266 32.8761 1.58033 34.9138 1.55752C41.3917 1.55752 46.659 7.22124 46.659 14.1805C46.7441 17.3115 45.6182 20.3546 43.5156 22.6761C43.0979 23.1788 28.5421 38.0248 28.5421 38.0248C28.3392 38.2348 28.2627 38.5307 28.3439 38.8073C28.425 39.0839 28.6513 39.2941 28.9338 39.3461C29.2164 39.3981 29.5057 39.2834 29.6749 39.0499C29.6749 39.0499 44.2731 24.354 44.8395 23.6885C47.1335 21.0759 48.3793 17.7066 48.3368 14.2301C48.3368 6.37168 42.3616 0.0707965 35.0271 0.0707965C32.9314 0.0882697 30.8711 0.612487 29.0219 1.59872C27.1727 2.58494 25.5896 4.0039 24.4076 5.73451C23.2225 3.97365 21.6238 2.53015 19.7515 1.53043C17.8792 0.530697 15.7903 0.00521899 13.6678 0C6.31205 0 0.336833 6.37168 0.336833 14.2088C0.297685 17.6848 1.54307 21.0529 3.83418 23.6673C4.38639 24.3327 23.2961 43.7522 23.2961 43.7522C23.9545 44.4602 25.2501 43.5115 24.4501 42.6619L5.07312 22.6549Z" fill="#474952"/></svg>
+            </div>
+            <div class="howhelp__card-content">
+              <h3 class="howhelp__card-title">Solidez financiera comprobada</h3>
+              <p class="howhelp__card-body">75 años en México respaldados por New York Life, la mutualista más grande de EE.UU.</p>
+            </div>
           </div>
 
+        </div>
+
+        <div class="howhelp__cta">
+          <a href="#" class="btn btn--primary">Cotiza ahora</a>
+          <a href="#" class="btn btn--outline">Consulta un asesor</a>
         </div>
       </div>
     </section>
 
-    <!-- Nuestros productos -->
+    <!-- §4 NUESTROS SEGUROS (navy + 4-col cards) ----------- -->
     <section class="products" id="productos">
       <div class="products__inner">
-        <h2 class="products__title">Nuestros seguros</h2>
+        <div class="products__header">
+          <p class="products__eyebrow">Nuestros Seguros</p>
+          <h2 class="products__title">Listos para los momentos de tu vida</h2>
+          <p class="products__lead">Desde el inicio de tu camino hasta el legado que dejas, te acompañamos con soluciones de protección y crecimiento diseñadas alrededor de tu vida.</p>
+        </div>
         <div class="products__grid">
 
           <a href="#" class="product-card">
-            <p class="product-card__pretitle">Individuales</p>
-            <h3 class="product-card__name">Seguros de Vida</h3>
-            <div class="product-card__desc">
-              <p>Protección financiera para tu familia ante cualquier eventualidad, con cobertura temporal o permanente.</p>
+            <div class="product-card__content">
+              <div class="product-card__pretitle">Individuales</div>
+              <p class="product-card__name">Seguros de Vida</p>
+              <div class="product-card__desc">
+                <p>Imagina Ser®, Realiza®, Vida Mujer®, Objetivo Vida® — protección para cada etapa.</p>
+              </div>
+              <span class="product-card__link">
+                Conoce más
+                <span class="arrow-icon" aria-hidden="true"><span class="arrow"></span></span>
+              </span>
             </div>
-            <span class="product-card__link btn btn--text">
-              Ver planes
-              <svg class="icon icon--arrow-sm" viewBox="0 0 8 14" fill="none">
-                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5"
-                      stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
           </a>
 
           <a href="#" class="product-card">
-            <p class="product-card__pretitle">Individuales</p>
-            <h3 class="product-card__name">Gastos Médicos Mayores</h3>
-            <div class="product-card__desc">
-              <p>Cobertura médica integral con la más amplia red hospitalaria en México y en el extranjero.</p>
+            <div class="product-card__content">
+              <div class="product-card__pretitle">Individuales</div>
+              <p class="product-card__name">Gastos Médicos Mayores</p>
+              <div class="product-card__desc">
+                <p>Alfa Medical®, Alfa Medical Flex®, Alfa Medical Internacional® — cobertura integral.</p>
+              </div>
+              <span class="product-card__link">
+                Conoce más
+                <span class="arrow-icon" aria-hidden="true"><span class="arrow"></span></span>
+              </span>
             </div>
-            <span class="product-card__link btn btn--text">
-              Ver planes
-              <svg class="icon icon--arrow-sm" viewBox="0 0 8 14" fill="none">
-                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5"
-                      stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
           </a>
 
           <a href="#" class="product-card">
-            <p class="product-card__pretitle">Grupales</p>
-            <h3 class="product-card__name">Seguros Grupales</h3>
-            <div class="product-card__desc">
-              <p>Soluciones de protección colectiva para empresas y sus colaboradores, adaptadas a cada organización.</p>
+            <div class="product-card__content">
+              <div class="product-card__pretitle">Grupales</div>
+              <p class="product-card__name">Vida Grupal y Colectivo</p>
+              <div class="product-card__desc">
+                <p>Seguro de Vida Grupo, Visualiza®, GMM Colectivo — protección para tus colaboradores.</p>
+              </div>
+              <span class="product-card__link">
+                Conoce más
+                <span class="arrow-icon" aria-hidden="true"><span class="arrow"></span></span>
+              </span>
             </div>
-            <span class="product-card__link btn btn--text">
-              Ver planes
-              <svg class="icon icon--arrow-sm" viewBox="0 0 8 14" fill="none">
-                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5"
-                      stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
+          </a>
+
+          <a href="#" class="product-card">
+            <div class="product-card__content">
+              <div class="product-card__pretitle">Empresarial</div>
+              <p class="product-card__name">Para tu empresa</p>
+              <div class="product-card__desc">
+                <p>Médico Empresarial, Accidentes Personales Colectivo — protección para tus colaboradores.</p>
+              </div>
+              <span class="product-card__link">
+                Conoce más
+                <span class="arrow-icon" aria-hidden="true"><span class="arrow"></span></span>
+              </span>
+            </div>
           </a>
 
         </div>
       </div>
     </section>
 
-    <!-- Trust stats -->
-    <section class="trust">
-      <div class="trust__inner">
-        <div class="trust__stat">
-          <span class="trust__value">130+</span>
-          <span class="trust__label">Años de experiencia</span>
-        </div>
-        <div class="trust__divider" aria-hidden="true"></div>
-        <div class="trust__stat">
-          <span class="trust__value">A++</span>
-          <span class="trust__label">Calificación A.M. Best</span>
-        </div>
-        <div class="trust__divider" aria-hidden="true"></div>
-        <div class="trust__stat">
-          <span class="trust__value">3M+</span>
-          <span class="trust__label">Clientes protegidos</span>
-        </div>
-        <div class="trust__divider" aria-hidden="true"></div>
-        <div class="trust__stat">
-          <span class="trust__value">AAA</span>
-          <span class="trust__label">Calificación Fitch</span>
+    <!-- §5 POR QUÉ SMNYL (image + 2×2 differentiators) ---- -->
+    <section class="why-smnyl">
+      <div class="why-smnyl__inner">
+        <div class="why-smnyl__media" aria-hidden="true"></div>
+        <div class="why-smnyl__content">
+          <p class="why-smnyl__eyebrow">Sobre Seguros Monterrey</p>
+          <h2 class="why-smnyl__title">Más fuertes juntos desde 1950</h2>
+          <div class="why-smnyl__grid">
+            <div class="differentiator">
+              <h4 class="differentiator__value">75 años</h4>
+              <p class="differentiator__label">En México, protegiendo a las familias mexicanas</p>
+            </div>
+            <div class="differentiator">
+              <h4 class="differentiator__value">175+ años</h4>
+              <p class="differentiator__label">New York Life, la mutualista más grande de EE.UU.</p>
+            </div>
+            <div class="differentiator">
+              <h4 class="differentiator__value">Expertos de la Vida</h4>
+              <p class="differentiator__label">Asesores certificados a tu lado</p>
+            </div>
+            <div class="differentiator">
+              <h4 class="differentiator__value">Great Place to Work</h4>
+              <p class="differentiator__label">Empresa reconocida · CONDUSEF</p>
+            </div>
+          </div>
+          <a href="#" class="btn btn--primary">Conócenos</a>
         </div>
       </div>
     </section>
 
-    <!-- Agentes -->
-    <section class="agents" id="agentes">
-      <div class="agents__inner">
-        <div class="agents__content">
-          <p class="agents__eyebrow">Red nacional</p>
-          <h2 class="agents__title">Conecta con un asesor</h2>
-          <p class="agents__text">Nuestros asesores certificados te guían para encontrar el seguro ideal para tus necesidades y las de tu familia, sin compromisos.</p>
-          <a href="#" class="btn btn--primary">Encuentra tu asesor</a>
-        </div>
-        <div class="agents__media" aria-hidden="true"></div>
+    <!-- §6 CIERRE / ASESOR (closing CTA) ------------------- -->
+    <section class="closing-cta">
+      <div class="closing-cta__inner">
+        <h2 class="closing-cta__title">¿Qué seguro es el indicado para ti?</h2>
+        <p class="closing-cta__body">Nuestros asesores te orientan sin compromiso. Encuéntralos en todo México.</p>
+        <a href="#" class="btn btn--primary">Consulta un asesor financiero</a>
       </div>
     </section>
 
