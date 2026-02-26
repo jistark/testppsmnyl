@@ -967,13 +967,12 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 }
 
 .footer__bottom {
-  display: flex; align-items: flex-start; gap: 24px; padding-bottom: 32px;
+  display: flex; align-items: baseline; gap: 24px; padding-bottom: 32px;
 }
 
 .footer__phone {
   font-family: var(--f-body); font-weight: 700;
   font-size: 16px; line-height: 19px; color: var(--c-white); text-decoration: none;
-  padding-top: 2px;
 }
 .footer__phone:hover { text-decoration: underline; }
 
