@@ -14,6 +14,7 @@ const MENU_DATA = {
       {
         id: 'vida',
         label: 'Seguros de Vida',
+        ctaLabel: 'Seguros de Vida',
         products: [
           { name: 'Temporales',        desc: 'Protección por un período definido con primas accesibles.' },
           { name: 'Vida Entera',       desc: 'Cobertura de por vida con acumulación de valor en efectivo.' },
@@ -24,11 +25,24 @@ const MENU_DATA = {
       {
         id: 'gmm',
         label: 'Seguros de Gastos Médicos Mayores',
+        ctaLabel: 'Seguros de Gastos Médicos Mayores',
         products: [
-          { name: 'Alfa Medical®',                desc: 'GMM con la más amplia red hospitalaria del país.' },
-          { name: 'Alfa Medical Flex®',            desc: 'Plan flexible con suma asegurada adaptable a tus necesidades.' },
-          { name: 'Alfa Medical Internacional®',   desc: 'Cobertura médica en México y el extranjero.' },
-          { name: 'Accidentes Personales Individual', desc: 'Protección económica ante lesiones y accidentes fortuitos.' },
+          {
+            name: 'Alfa Medical®',
+            desc: 'El Seguro de Gastos Médicos Mayores con el cual puedes recibir atención para recuperar tu salud, según tus necesidades.',
+          },
+          {
+            name: 'Alfa Medical Flex®',
+            desc: 'Un Seguro de Gastos Médicos Mayores que se adapta a tu presupuesto para acceder a diversos hospitales en México.',
+          },
+          {
+            name: 'Alfa Medical Internacional®',
+            desc: 'El Seguro de Gastos Médicos Mayores que te permite recibir la atención hospitalaria de especialistas en México y el extranjero.',
+          },
+          {
+            name: 'Accidentes Personales Individual',
+            desc: 'Un seguro de gastos médicos mayores individual que te ofrece protección por daño físico.',
+          },
         ],
       },
     ],
@@ -67,6 +81,7 @@ const menuTitle     = document.querySelector('.js-menu-title');
 const searchPanel   = document.getElementById('searchPanel');
 const searchInput   = document.getElementById('searchInput');
 const searchClear   = document.querySelector('.js-search-clear');
+const searchDropdown = document.getElementById('searchDropdown');
 
 const loginPanel    = document.getElementById('loginPanel');
 const loginForm     = document.getElementById('loginForm');
@@ -77,6 +92,86 @@ const loginSubmit   = document.getElementById('loginSubmitBtn');
 const menuTriggers  = document.querySelectorAll('.js-menu-trigger');
 const searchTrigger = document.querySelector('.js-search-trigger');
 const loginTrigger  = document.querySelector('.js-login-trigger');
+
+function normalizeLabel(value = '') {
+  return value
+    .toString()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+}
+
+function getFooterLinksBySection(sectionLabel, fallback = []) {
+  const target = normalizeLabel(sectionLabel);
+  const headings = [...document.querySelectorAll('.footer__col-title')];
+  const heading = headings.find(el => normalizeLabel(el.textContent) === target);
+  const list = heading?.nextElementSibling;
+
+  if (!list || !list.classList.contains('footer__links')) {
+    return fallback.map(item => ({ ...item }));
+  }
+
+  const links = [...list.querySelectorAll('a')]
+    .map(anchor => ({
+      label: anchor.textContent.trim(),
+      href: anchor.getAttribute('href') || '#',
+    }))
+    .filter(link => link.label.length > 0);
+
+  return links.length ? links : fallback.map(item => ({ ...item }));
+}
+
+function linksToProducts(links) {
+  return links.map(link => ({
+    name: link.label,
+    href: link.href || '#',
+    desc: '',
+  }));
+}
+
+const footerConocenosLinks = getFooterLinksBySection('Conócenos', [
+  { label: 'Nuestra filosofía', href: '#' },
+  { label: 'Nuestra historia', href: '#' },
+  { label: 'New York Life en el mundo', href: '#' },
+  { label: 'Informe corporativo', href: '#' },
+  { label: 'Sustentabilidad', href: '#' },
+  { label: 'Integridad y cumplimiento', href: '#' },
+]);
+
+const footerUneteLinks = getFooterLinksBySection('Únete', [
+  { label: 'Como colaborador', href: '#' },
+  { label: 'Como asesor', href: '#' },
+  { label: 'Como promotor o partner', href: '#' },
+]);
+
+MENU_DATA.conocenos = {
+  title: 'Conócenos',
+  ctaLabel: 'Conócenos',
+  ctaHref: footerConocenosLinks[0]?.href || '#',
+  items: [
+    {
+      id: 'conocenos-links',
+      label: 'Conócenos',
+      href: footerConocenosLinks[0]?.href || '#',
+      products: linksToProducts(footerConocenosLinks),
+    },
+  ],
+};
+
+MENU_DATA.unete = {
+  title: 'Únete',
+  ctaLabel: 'Únete',
+  ctaHref: footerUneteLinks[0]?.href || '#',
+  items: [
+    {
+      id: 'unete-links',
+      label: 'Únete',
+      href: footerUneteLinks[0]?.href || '#',
+      products: linksToProducts(footerUneteLinks),
+    },
+  ],
+};
 
 let currentMenu = null;
 
@@ -119,56 +214,89 @@ function trapFocus(container) {
 
 const cleanups = {};
 
+function resetL2(clearPrimaryState = false) {
+  sidebarL2.classList.remove('is-visible');
+  sidebarL2.setAttribute('aria-hidden', 'true');
+  sidebarL2Cont.innerHTML = '';
+
+  if (clearPrimaryState) {
+    sidebarL1Nav.querySelectorAll('.sidebar__link').forEach(btn => {
+      btn.classList.remove('is-active');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+}
+
 // ─── Renderizado menú ─────────────────────────────────────
 function renderL1(menuId) {
   const data = MENU_DATA[menuId];
-  sidebarL1Nav.innerHTML = data.items.map((item, i) => `
+  sidebarL1Nav.innerHTML = data.items.map(item => `
     <li role="listitem">
       <button
-        class="sidebar__link${i === 0 ? ' is-active' : ''}"
+        class="sidebar__link"
         data-item="${item.id}"
         type="button"
-        aria-expanded="${i === 0}"
+        aria-expanded="false"
       >
-        ${item.label}
-        ${chevronRight}
+        <span class="sidebar__link-label">${item.label}</span>
       </button>
     </li>
   `).join('');
 
   sidebarL1Nav.querySelectorAll('.sidebar__link').forEach(btn => {
     btn.addEventListener('click', () => {
+      const alreadyActive = btn.classList.contains('is-active');
+
       sidebarL1Nav.querySelectorAll('.sidebar__link').forEach(b => {
         b.classList.remove('is-active');
         b.setAttribute('aria-expanded', 'false');
       });
+
+      if (alreadyActive) {
+        resetL2();
+        return;
+      }
+
       btn.classList.add('is-active');
       btn.setAttribute('aria-expanded', 'true');
       renderL2(menuId, btn.dataset.item);
     });
   });
+
+  // Estado inicial: primer item activo para preservar estado visual.
+  const firstItem = sidebarL1Nav.querySelector('.sidebar__link');
+  if (firstItem) {
+    firstItem.classList.add('is-active');
+    firstItem.setAttribute('aria-expanded', 'true');
+    renderL2(menuId, firstItem.dataset.item);
+  }
 }
 
 function renderL2(menuId, itemId) {
+  const menu = MENU_DATA[menuId];
   const item = MENU_DATA[menuId].items.find(i => i.id === itemId);
   if (!item) return;
 
+  const sectionHref = item.href || item.products?.[0]?.href || '#';
+  const ctaLabel = item.ctaLabel || menu.ctaLabel || 'Me interesa';
+  const ctaHref = item.ctaHref || menu.ctaHref || sectionHref;
+
   sidebarL2Cont.innerHTML = `
     <h6 class="sidebar__section-title">
-      <a href="#">${item.label}</a>
+      <a href="${sectionHref}">${item.label}</a>
       ${chevronRight}
     </h6>
     <div class="product-list">
       ${item.products.map(p => `
-        <a href="#" class="product-item">
+        <a href="${p.href || '#'}" class="product-item">
           <p class="product-item__name">${p.name}</p>
-          <p class="product-item__desc">${p.desc}</p>
+          ${p.desc ? `<p class="product-item__desc">${p.desc}</p>` : ''}
         </a>
       `).join('')}
     </div>
     <div class="sidebar__l2-cta">
-      <a href="#" class="btn btn--text">
-        Me interesa ${arrowLong}
+      <a href="${ctaHref}" class="btn btn--text">
+        ${ctaLabel} ${arrowLong}
       </a>
     </div>
   `;
@@ -183,8 +311,8 @@ function openMenu(menuId) {
   currentMenu = menuId;
 
   menuTitle.textContent = MENU_DATA[menuId].title;
+  resetL2(true);
   renderL1(menuId);
-  renderL2(menuId, MENU_DATA[menuId].items[0].id);
 
   menuTriggers.forEach(t => {
     const active = t.dataset.menu === menuId;
@@ -211,14 +339,63 @@ function openMenu(menuId) {
 function closeMenu(restoreFocus = true) {
   megaMenu.classList.remove('is-open');
   megaMenu.setAttribute('aria-hidden', 'true');
-  sidebarL2.classList.remove('is-visible');
-  sidebarL2.setAttribute('aria-hidden', 'true');
+  resetL2(true);
   menuTriggers.forEach(t => { t.classList.remove('is-active'); t.setAttribute('aria-expanded', 'false'); });
   currentMenu = null;
   if (cleanups.menu) { cleanups.menu(); cleanups.menu = null; }
 }
 
 // ─── Search panel ─────────────────────────────────────────
+function getSearchSuggestions() {
+  const seen = new Set();
+  const suggestions = [];
+
+  function push(label, href = '#') {
+    const cleanLabel = (label || '').trim();
+    const key = normalizeLabel(cleanLabel);
+    if (!cleanLabel || seen.has(key)) return;
+    seen.add(key);
+    suggestions.push({ label: cleanLabel, href: href || '#' });
+  }
+
+  Object.values(MENU_DATA).forEach(menu => {
+    (menu.items || []).forEach(item => {
+      push(item.label, item.href);
+      (item.products || []).forEach(product => push(product.name, product.href));
+    });
+  });
+
+  return suggestions;
+}
+
+function renderSearchDropdown(rawQuery = '') {
+  if (!searchDropdown) return;
+  const query = normalizeLabel(rawQuery);
+  if (!query) {
+    searchDropdown.hidden = true;
+    searchDropdown.innerHTML = '';
+    return;
+  }
+
+  const matches = getSearchSuggestions()
+    .filter(item => normalizeLabel(item.label).includes(query))
+    .slice(0, 8);
+
+  searchDropdown.hidden = matches.length === 0;
+  searchDropdown.innerHTML = matches.map(item => `
+    <li role="option">
+      <a class="search-dropdown__item" href="${item.href}">${item.label}</a>
+    </li>
+  `).join('');
+}
+
+function syncSearchClear() {
+  if (!searchClear || !searchInput) return;
+  const hasQuery = searchInput.value.trim().length > 0;
+  searchClear.hidden = !hasQuery;
+  searchClear.disabled = !hasQuery;
+}
+
 function openSearch() {
   closeMenu(false);
   closeLogin(false);
@@ -229,6 +406,8 @@ function openSearch() {
   searchTrigger.classList.add('is-active');
 
   cleanups.search = trapFocus(searchPanel);
+  syncSearchClear();
+  renderSearchDropdown(searchInput.value);
   setTimeout(() => searchInput.focus(), 80);
 }
 
@@ -237,18 +416,32 @@ function closeSearch(restoreFocus = true) {
   searchPanel.setAttribute('aria-hidden', 'true');
   searchTrigger.setAttribute('aria-expanded', 'false');
   searchTrigger.classList.remove('is-active');
+  if (searchDropdown) {
+    searchDropdown.hidden = true;
+    searchDropdown.innerHTML = '';
+  }
+  if (searchClear) {
+    searchClear.hidden = true;
+    searchClear.disabled = true;
+  }
   if (cleanups.search) { cleanups.search(); cleanups.search = null; }
 }
 
 // Search: clear button
 searchInput.addEventListener('input', () => {
-  searchClear.hidden = searchInput.value.length === 0;
+  syncSearchClear();
+  renderSearchDropdown(searchInput.value);
 });
 
 searchClear.addEventListener('click', () => {
   searchInput.value = '';
-  searchClear.hidden = true;
+  syncSearchClear();
+  renderSearchDropdown('');
   searchInput.focus();
+});
+
+searchDropdown?.addEventListener('click', () => {
+  closeSearch(false);
 });
 
 searchInput.addEventListener('keydown', e => {
@@ -396,8 +589,7 @@ document.querySelectorAll('.js-close-login').forEach(el =>
 // Botón "Regresar" en L2 mobile
 document.querySelectorAll('.js-drawer-back').forEach(el =>
   el.addEventListener('click', () => {
-    sidebarL2.classList.remove('is-visible');
-    sidebarL2.setAttribute('aria-hidden', 'true');
+    resetL2(true);
     const first = sidebarL1Nav.querySelector('.sidebar__link');
     if (first) first.focus();
   })

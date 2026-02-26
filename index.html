@@ -6,7 +6,8 @@
   <title>Seguros Monterrey New York Life</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -16,7 +17,11 @@
     <div class="header__inner">
 
       <a href="/" class="header__logo" aria-label="Seguros Monterrey New York Life">
-        <div class="logo-box"><span class="logo-text">SMNYL</span></div>
+        <img class="header__logo-img"
+             src="img/smnyl-logo.svg"
+             width="150"
+             height="38"
+             alt="Seguros Monterrey New York Life">
       </a>
 
       <!-- Nav principal (L1 triggers) -->
@@ -29,8 +34,14 @@
                 aria-expanded="false" aria-controls="megaMenu" type="button">
           Seguros grupales
         </button>
-        <a href="#conocenos" class="nav-item nav-item--link">Conócenos</a>
-        <a href="#unete"     class="nav-item nav-item--link">Únete</a>
+        <button class="nav-item js-menu-trigger" data-menu="conocenos"
+                aria-expanded="false" aria-controls="megaMenu" type="button">
+          Conócenos
+        </button>
+        <button class="nav-item js-menu-trigger" data-menu="unete"
+                aria-expanded="false" aria-controls="megaMenu" type="button">
+          Únete
+        </button>
       </nav>
 
       <!-- Nav secundaria -->
@@ -77,10 +88,10 @@
       <div class="sidebar__cta">
         <div class="sidebar__cta-rule"></div>
         <p class="sidebar__cta-title">Cuenta con un seguro adecuado a tus objetivos</p>
-        <p class="sidebar__cta-desc">Nuestros asesores te ayudan a encontrar el plan perfecto para ti y tu familia.</p>
-        <a href="#" class="btn btn--text">
+        <p class="sidebar__cta-desc">¿Quieres saber cuál es el seguro ideal para ti? Un asesor puede ayudarte a construir una solución personalizada para ti.</p>
+        <a href="#" class="sidebar__cta-link">
           Me interesa
-          <svg class="icon icon--arrow-long" viewBox="0 0 26 14" fill="none">
+          <svg class="icon icon--arrow-long" viewBox="0 0 26 14" fill="none" aria-hidden="true">
             <path d="M0 7H24M24 7L18 1.5M24 7L18 12.5" stroke="currentColor" stroke-width="1.5"
                   stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -126,10 +137,7 @@
         <!-- Clear button — aparece cuando hay texto -->
         <button class="search-clear js-search-clear" type="button"
                 aria-label="Limpiar búsqueda" hidden>
-          <svg class="icon" viewBox="0 0 14 14" fill="none">
-            <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round"/>
-          </svg>
+          Limpiar
         </button>
         <button class="search-btn" type="submit" aria-label="Realizar búsqueda">
           <svg class="icon" viewBox="0 0 16 16" fill="none">
@@ -138,6 +146,8 @@
           </svg>
         </button>
       </div>
+      <ul class="search-dropdown" id="searchDropdown"
+          role="listbox" aria-label="Sugerencias de búsqueda" hidden></ul>
     </div>
 
     <div class="search-panel__overlay js-close-search" tabindex="-1" aria-hidden="true"></div>
@@ -227,20 +237,19 @@
     <!-- §1 HERO (cmp-hero__billboard) ---------------------- -->
     <section class="cmp-hero__billboard">
       <div class="cmp-hero__image" aria-hidden="true">
-        <div class="hero__img-placeholder"></div>
+        <img class="cmp-hero__img" src="https://assets.newyorklife.com/is/image/nylAssetsProd/3x2_family-having-fun-while-moving-into-new-home_AdobeStock_407281005_EXTENDED-w2000-h857-fpng-alpha" alt="family having fun while moving into new home">
       </div>
       <div class="cmp-hero__container">
         <div class="cmp-hero__content">
           <h1 class="cmp-hero__title">
-            <span class="cmp-hero__pretitle">La aseguradora más confiable de México</span>
-            Siempre contigo, protegiéndote mejor cada día
+            <span class="cmp-hero__pretitle">SEGUROS DE VIDA • GASTOS MÉDICOS MAYORES</span>
+            Proteger Mejor® es lo que somos.
           </h1>
           <div class="cmp-hero__description">
-            <p>Con 75 años en México y el respaldo de New York Life, seguros de vida y gastos médicos para proteger lo que más amas.</p>
+            <p>Por más de 65 años, le brindamos a más familias mexicanas tranquilidad y respaldo financiero para su futuro.</p>
           </div>
           <div class="cmp-hero__cta">
-            <a href="#" class="btn btn--primary">Cotiza tu seguro</a>
-            <a href="#" class="btn btn--outline">Encuentra un asesor</a>
+            <a href="#" class="btn btn--primary">Conoce hoy</a>
           </div>
         </div>
       </div>
@@ -249,10 +258,10 @@
     <!-- §2 BRAND PROMISE STRIP ----------------------------- -->
     <section class="brand-promise">
       <div class="brand-promise__inner">
-        <p class="brand-promise__text">75 años junto a las familias mexicanas · Con el respaldo de New York Life</p>
+        <p class="brand-promise__text">Cómo evitar el uso indebido de tu póliza</p>
         <a href="#" class="brand-promise__link">
-          Conoce nuestra historia
-          <span class="arrow-icon" aria-hidden="true"><span class="arrow"></span></span>
+          Más información
+          <span class="button--arrow" aria-hidden="true"><span class="button--arrow-icon"></span></span>
         </a>
       </div>
     </section>
@@ -260,8 +269,8 @@
     <!-- §3 ¿CÓMO TE AYUDAMOS? (feature cards) -------------- -->
     <section class="howhelp" id="como-te-ayudamos">
       <div class="howhelp__inner">
-        <p class="howhelp__eyebrow">Guía Personalizada</p>
-        <h2 class="howhelp__title">¿Cómo te ayudamos?</h2>
+        <p class="howhelp__eyebrow">ASESORÍA PERSONALIZADA</p>
+        <h2 class="howhelp__title">Cuidar tu vida y a tu familia es una de las mejores decisiones que puedes tomar hoy.</h2>
         <p class="howhelp__lead">Las decisiones importantes son más fáciles con un especialista a tu lado. Nuestros asesores se toman el tiempo de entender tus metas para que construyas el futuro que imaginas.</p>
 
         <div class="howhelp__grid">
@@ -272,7 +281,7 @@
             </div>
             <div class="howhelp__card-content">
               <h3 class="howhelp__card-title">Seguros a la medida de tu vida</h3>
-              <p class="howhelp__card-body">Vida, salud y protección empresarial diseñados para cada etapa.</p>
+              <p class="howhelp__card-body">Soluciones diseñadas para cada etapa y objetivo de tu vida.</p>
             </div>
           </div>
 
@@ -282,7 +291,7 @@
             </div>
             <div class="howhelp__card-content">
               <h3 class="howhelp__card-title">Atención humana y cercana</h3>
-              <p class="howhelp__card-body">Asesores certificados que te acompañan cuando más lo necesitas.</p>
+              <p class="howhelp__card-body">Un equipo de asesores especializados listo para acompañarte en cada decisión.</p>
             </div>
           </div>
 
@@ -292,7 +301,7 @@
             </div>
             <div class="howhelp__card-content">
               <h3 class="howhelp__card-title">Solidez financiera comprobada</h3>
-              <p class="howhelp__card-body">75 años en México respaldados por New York Life, la mutualista más grande de EE.UU.</p>
+              <p class="howhelp__card-body">Calificaciones y respaldo internacional para proteger tu patrimonio con confianza.</p>
             </div>
           </div>
 
@@ -300,8 +309,20 @@
 
         <div class="howhelp__cta">
           <a href="#" class="btn btn--primary">Cotiza ahora</a>
-          <a href="#" class="btn btn--outline">Consulta un asesor</a>
+          <a href="#" class="btn btn--outline">Conoce un asesor</a>
         </div>
+      </div>
+    </section>
+
+    <!-- §3.5 ANNOUNCEMENT STRIP ---------------------------- -->
+    <section class="announcement-strip" aria-label="Comunicado">
+      <div class="announcement-strip__inner">
+        <img class="announcement-strip__icon" src="img/icon-announcement-blue.svg" alt="icon-announcement" loading="lazy">
+        <h4 class="announcement-strip__title">Seguros Monterrey New York Life anuncia resultados récord para 2026</h4>
+        <a href="#" class="announcement-strip__link">
+          Ver comunicado
+          <span class="button--arrow" aria-hidden="true"><span class="button--arrow-icon"></span></span>
+        </a>
       </div>
     </section>
 
@@ -309,7 +330,7 @@
     <section class="products" id="productos">
       <div class="products__inner">
         <div class="products__header">
-          <p class="products__eyebrow">Nuestros Seguros</p>
+          <p class="products__eyebrow">NUESTROS SEGUROS</p>
           <h2 class="products__title">Listos para los momentos de tu vida</h2>
           <p class="products__lead">Desde el inicio de tu camino hasta el legado que dejas, te acompañamos con soluciones de protección y crecimiento diseñadas alrededor de tu vida.</p>
         </div>
@@ -317,56 +338,56 @@
 
           <a href="#" class="product-card">
             <div class="product-card__content">
-              <div class="product-card__pretitle">Individuales</div>
-              <p class="product-card__name">Seguros de Vida</p>
+              <div class="product-card__pretitle">Seguro de vida</div>
+              <p class="product-card__name">Protege a tu familia hasta 100 años</p>
               <div class="product-card__desc">
-                <p>Imagina Ser®, Realiza®, Vida Mujer®, Objetivo Vida® — protección para cada etapa.</p>
+                <p>Vitality, supervivencia, educación y más opciones de protección.</p>
               </div>
               <span class="product-card__link">
                 Conoce más
-                <span class="arrow-icon" aria-hidden="true"><span class="arrow"></span></span>
+                <span class="button--arrow" aria-hidden="true"><span class="button--arrow-icon"></span></span>
               </span>
             </div>
           </a>
 
           <a href="#" class="product-card">
             <div class="product-card__content">
-              <div class="product-card__pretitle">Individuales</div>
-              <p class="product-card__name">Gastos Médicos Mayores</p>
+              <div class="product-card__pretitle">Gastos médicos mayores</div>
+              <p class="product-card__name">Ante una eventualidad médica, cuidas tu bienestar</p>
               <div class="product-card__desc">
-                <p>Alfa Medical®, Alfa Medical Flex®, Alfa Medical Internacional® — cobertura integral.</p>
+                <p>Atención, hospitalización y servicios con cobertura flexible.</p>
               </div>
               <span class="product-card__link">
                 Conoce más
-                <span class="arrow-icon" aria-hidden="true"><span class="arrow"></span></span>
+                <span class="button--arrow" aria-hidden="true"><span class="button--arrow-icon"></span></span>
               </span>
             </div>
           </a>
 
           <a href="#" class="product-card">
             <div class="product-card__content">
-              <div class="product-card__pretitle">Grupales</div>
-              <p class="product-card__name">Vida Grupal y Colectivo</p>
+              <div class="product-card__pretitle">Vida grupal y colectivo</div>
+              <p class="product-card__name">Protege a tu equipo con beneficios integrales</p>
               <div class="product-card__desc">
-                <p>Seguro de Vida Grupo, Visualiza®, GMM Colectivo — protección para tus colaboradores.</p>
+                <p>Planes empresariales para colaboradores y familias.</p>
               </div>
               <span class="product-card__link">
                 Conoce más
-                <span class="arrow-icon" aria-hidden="true"><span class="arrow"></span></span>
+                <span class="button--arrow" aria-hidden="true"><span class="button--arrow-icon"></span></span>
               </span>
             </div>
           </a>
 
           <a href="#" class="product-card">
             <div class="product-card__content">
-              <div class="product-card__pretitle">Empresarial</div>
-              <p class="product-card__name">Para tu empresa</p>
+              <div class="product-card__pretitle">Para tu empresa</div>
+              <p class="product-card__name">Impulsa tu negocio con protección y respaldo</p>
               <div class="product-card__desc">
-                <p>Médico Empresarial, Accidentes Personales Colectivo — protección para tus colaboradores.</p>
+                <p>Diseños personalizados para equipos, operación y crecimiento.</p>
               </div>
               <span class="product-card__link">
                 Conoce más
-                <span class="arrow-icon" aria-hidden="true"><span class="arrow"></span></span>
+                <span class="button--arrow" aria-hidden="true"><span class="button--arrow-icon"></span></span>
               </span>
             </div>
           </a>
@@ -375,42 +396,158 @@
       </div>
     </section>
 
-    <!-- §5 POR QUÉ SMNYL (image + 2×2 differentiators) ---- -->
-    <section class="why-smnyl">
-      <div class="why-smnyl__inner">
-        <div class="why-smnyl__media" aria-hidden="true"></div>
-        <div class="why-smnyl__content">
-          <p class="why-smnyl__eyebrow">Sobre Seguros Monterrey</p>
-          <h2 class="why-smnyl__title">Más fuertes juntos desde 1950</h2>
-          <div class="why-smnyl__grid">
-            <div class="differentiator">
-              <h4 class="differentiator__value">75 años</h4>
-              <p class="differentiator__label">En México, protegiendo a las familias mexicanas</p>
+    <!-- §5 RECURSOS ---------------------------------------- -->
+    <section class="resources" id="resources">
+      <div class="resources__inner">
+        <p class="resources__eyebrow">ARTÍCULOS Y CALCULADORAS</p>
+        <h2 class="resources__title">Recursos para acompañar tu siguiente paso</h2>
+        <div class="resources__grid">
+          <a class="resources-card resources-card--article" href="#">
+            <img src="https://assets.newyorklife.com/is/image/nylAssetsProd/women-working-on-computer-w575-h323" alt="Mujer trabajando en una computadora en oficina">
+            <div class="resources-card__body">
+              <span class="resources-card__pretitle">Artículo</span>
+              <h3 class="resources-card__title">Guía de tipos de seguros de vida</h3>
             </div>
-            <div class="differentiator">
-              <h4 class="differentiator__value">175+ años</h4>
-              <p class="differentiator__label">New York Life, la mutualista más grande de EE.UU.</p>
+          </a>
+          <a class="resources-card resources-card--article" href="#">
+            <img src="https://assets.newyorklife.com/is/image/nylAssetsProd/6-reasons-why-why-to-buy-life-insurance-iStock-1156486392-3x2-ratio-w575-h323" alt="Mujeres revisando documentos">
+            <div class="resources-card__body">
+              <span class="resources-card__pretitle">Artículo</span>
+              <h3 class="resources-card__title">Cómo crear un presupuesto efectivo</h3>
             </div>
-            <div class="differentiator">
-              <h4 class="differentiator__value">Expertos de la Vida</h4>
-              <p class="differentiator__label">Asesores certificados a tu lado</p>
+          </a>
+          <a class="resources-card resources-card--article" href="#">
+            <img src="https://assets.newyorklife.com/is/image/newyorklife/older-couple-enjoying-pottery-shutterstock_633965222-w575-h323" alt="Pareja mayor disfrutando de una actividad">
+            <div class="resources-card__body">
+              <span class="resources-card__pretitle">Artículo</span>
+              <h3 class="resources-card__title">¿Las anualidades son una opción segura?</h3>
             </div>
-            <div class="differentiator">
-              <h4 class="differentiator__value">Great Place to Work</h4>
-              <p class="differentiator__label">Empresa reconocida · CONDUSEF</p>
+          </a>
+          <a class="resources-card resources-card--tool" href="#">
+            <div class="resources-card__icon" aria-hidden="true">□</div>
+            <div class="resources-card__body">
+              <h3 class="resources-card__title">Calculadora de gastos mensuales</h3>
             </div>
+          </a>
+          <a class="resources-card resources-card--tool" href="#">
+            <div class="resources-card__icon" aria-hidden="true">◔</div>
+            <div class="resources-card__body">
+              <h3 class="resources-card__title">Calculadora de ahorro para el retiro</h3>
+            </div>
+          </a>
+          <a class="resources-card resources-card--tool" href="#">
+            <div class="resources-card__icon" aria-hidden="true">◈</div>
+            <div class="resources-card__body">
+              <h3 class="resources-card__title">Calculadora de cuidado a largo plazo</h3>
+            </div>
+          </a>
+          <a class="resources-card resources-card--tool" href="#">
+            <div class="resources-card__icon" aria-hidden="true">◌</div>
+            <div class="resources-card__body">
+              <h3 class="resources-card__title">Calculadora de ahorro universitario</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- §6 SOBRE SMNYL ------------------------------------- -->
+    <section class="about-nyl">
+      <div class="about-nyl__inner">
+        <div class="about-nyl__hero" aria-hidden="true">
+          <img src="https://assets.newyorklife.com/is/image/nylAssetsProd/3x2_senior-couple-handshake-and-meeting-with-financial-advisor_AdobeStock_1281397116-w1400-h380" alt="">
+        </div>
+        <p class="about-nyl__eyebrow">SOBRE SEGUROS MONTERREY</p>
+        <h2 class="about-nyl__title">Más fuertes juntos desde 1950</h2>
+        <div class="about-nyl__grid">
+          <div class="about-nyl__item">
+            <h3 class="about-nyl__item-title">75 años</h3>
+            <p class="about-nyl__item-body">En México, protegiendo a las familias mexicanas.</p>
           </div>
-          <a href="#" class="btn btn--primary">Conócenos</a>
+          <div class="about-nyl__item">
+            <h3 class="about-nyl__item-title">175+ años</h3>
+            <p class="about-nyl__item-body">New York Life, la mutualista más grande de EE.UU.</p>
+          </div>
+          <div class="about-nyl__item">
+            <h3 class="about-nyl__item-title">Expertos de la vida</h3>
+            <p class="about-nyl__item-body">Asesores certificados para acompañarte en cada paso.</p>
+          </div>
+          <div class="about-nyl__item">
+            <h3 class="about-nyl__item-title">Great Place to Work</h3>
+            <p class="about-nyl__item-body">Empresa reconocida por su cultura y servicio.</p>
+          </div>
+        </div>
+        <a href="#" class="btn btn--primary">Conócenos</a>
+      </div>
+    </section>
+
+    <!-- §7 IMPACTO EN LA COMUNIDAD ------------------------- -->
+    <section class="community-impact">
+      <div class="community-impact__inner">
+        <p class="community-impact__eyebrow">IMPACTO EN LA COMUNIDAD</p>
+        <h2 class="community-impact__title">Creando oportunidades donde vivimos y trabajamos</h2>
+        <div class="community-impact__grid">
+          <a class="community-card" href="#">
+            <img src="https://assets.newyorklife.com/is/image/nylAssetsProd/Foundation-Smiling-Teaching-Doing-Crafts-With-Young-Girl-4_3-w575-h323" alt="Smiling teacher and child doing crafts together" loading="lazy">
+            <div class="community-card__body">
+              <span class="community-card__pretitle">Fundación Seguros Monterrey</span>
+              <h3 class="community-card__title">Conoce nuestro trabajo en acción</h3>
+              <span class="community-card__link">
+                Conoce más
+                <span class="button--arrow" aria-hidden="true"><span class="button--arrow-icon"></span></span>
+              </span>
+            </div>
+          </a>
+          <a class="community-card" href="#">
+            <img src="https://assets.newyorklife.com/is/image/nylAssetsProd/Our-People-Agent-Volunteers-w575-h323" alt="Volunteer work" loading="lazy">
+            <div class="community-card__body">
+              <span class="community-card__pretitle">Responsabilidad social</span>
+              <h3 class="community-card__title">Explora nuestros programas de apoyo</h3>
+              <span class="community-card__link">
+                Conoce más
+                <span class="button--arrow" aria-hidden="true"><span class="button--arrow-icon"></span></span>
+              </span>
+            </div>
+          </a>
+          <a class="community-card" href="#">
+            <img src="https://assets.newyorklife.com/is/image/nylAssetsProd/Partnership-Hero-3x2-image-template-with-safe-area-2000x1333-w575-h323" alt="Team high five for outdoor game" loading="lazy">
+            <div class="community-card__body">
+              <span class="community-card__pretitle">Alianzas estratégicas</span>
+              <h3 class="community-card__title">Descubre cómo crecemos junto a más familias</h3>
+              <span class="community-card__link">
+                Conoce más
+                <span class="button--arrow" aria-hidden="true"><span class="button--arrow-icon"></span></span>
+              </span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- §6 CIERRE / ASESOR (closing CTA) ------------------- -->
+    <!-- §8 CLOSING CTA ------------------------------------- -->
     <section class="closing-cta">
       <div class="closing-cta__inner">
-        <h2 class="closing-cta__title">¿Qué seguro es el indicado para ti?</h2>
-        <p class="closing-cta__body">Nuestros asesores te orientan sin compromiso. Encuéntralos en todo México.</p>
-        <a href="#" class="btn btn--primary">Consulta un asesor financiero</a>
+        <svg class="closing-cta__outline closing-cta__outline--desktop" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-0.002 -0.005 1.004 1.01" preserveAspectRatio="none" aria-hidden="true">
+          <path vector-effect="non-scaling-stroke" d="M.002.2501L.108.0025c.0007-.0017.0015-.0025.0022-.0025h.8867c.0017,0,.0031.0084.0031.0189v.71c0,.0094-.0011.0174-.0027.0187l-.296.2521s-.0006.0004-.0009.0004H.0031c-.0017,0-.0031-.0084-.0031-.0189V.2677c0-.0078.0008-.0148.002-.0176Z"></path>
+        </svg>
+        <svg class="closing-cta__outline closing-cta__outline--mobile" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-0.002 -0.005 1.004 1.01" preserveAspectRatio="none" aria-hidden="true">
+          <path vector-effect="non-scaling-stroke" d="M.2039,0h.7921C.9982,0,1,.0017,1,.0038v.8419c0,.0017-.0012.0032-.0029.0037l-.5518.1503c-.0007.0002-.0014.0003-.0022.0003H.004c-.0022,0-.004-.0017-.004-.0038V.1532c0-.0024.0011-.0046.0031-.0061L.199.0016C.2004.0006.2022,0,.2039,0Z"></path>
+        </svg>
+        <div class="closing-cta__copy">
+          <h2 class="closing-cta__title">Protege a tu familia hoy.</h2>
+          <p class="closing-cta__body">Conoce cómo asegurar su futuro con la ayuda de un asesor.</p>
+        </div>
+        <a href="#" class="btn btn--primary">Solicita una asesoría</a>
+      </div>
+    </section>
+
+    <!-- §9 DISCLAIMERS ------------------------------------- -->
+    <section class="disclaimer">
+      <div class="disclaimer__inner">
+        <p><sup>1</sup> Seguros Monterrey New York Life y New York Life cuentan con una de las trayectorias más sólidas en protección financiera.</p>
+        <p><sup>2</sup> La contratación y beneficios de cada producto dependen de las condiciones generales vigentes.</p>
+        <p><sup>3</sup> La disponibilidad de coberturas y servicios puede variar según el plan contratado.</p>
+        <p><sup>4</sup> Cifras y reconocimientos con corte a junio de 2025.</p>
       </div>
     </section>
 
@@ -482,7 +619,7 @@
                 <div class="subscribe-input-group">
                   <label for="subscribeInput" class="sr-only">Correo electrónico</label>
                   <input type="email" id="subscribeInput" name="email"
-                         class="subscribe-input" placeholder="Tu correo electrónico"
+                         class="subscribe-input" placeholder="Tu correo"
                          required aria-describedby="subscribeError">
                   <button class="subscribe-btn" type="submit" aria-label="Suscribirse">
                     <!-- Arrow (default) -->
