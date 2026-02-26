@@ -245,17 +245,10 @@ function renderL1(menuId) {
 
   sidebarL1Nav.querySelectorAll('.sidebar__link').forEach(btn => {
     btn.addEventListener('click', () => {
-      const alreadyActive = btn.classList.contains('is-active');
-
       sidebarL1Nav.querySelectorAll('.sidebar__link').forEach(b => {
         b.classList.remove('is-active');
         b.setAttribute('aria-expanded', 'false');
       });
-
-      if (alreadyActive) {
-        resetL2();
-        return;
-      }
 
       btn.classList.add('is-active');
       btn.setAttribute('aria-expanded', 'true');
