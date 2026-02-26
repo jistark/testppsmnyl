@@ -256,13 +256,6 @@ function renderL1(menuId) {
     });
   });
 
-  // Estado inicial: primer item activo para preservar estado visual.
-  const firstItem = sidebarL1Nav.querySelector('.sidebar__link');
-  if (firstItem) {
-    firstItem.classList.add('is-active');
-    firstItem.setAttribute('aria-expanded', 'true');
-    renderL2(menuId, firstItem.dataset.item);
-  }
 }
 
 function renderL2(menuId, itemId) {
