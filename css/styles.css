@@ -846,6 +846,13 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 }
 .footer__col-title--spaced { margin-top: 32px; }
 
+.footer__subscribe-desc {
+  font-family: var(--f-body); font-weight: 400;
+  font-size: 14px; line-height: 16.4px;
+  color: var(--c-white);
+  margin-bottom: 16px;
+}
+
 .footer__links { display: flex; flex-direction: column; gap: 16px; }
 
 .footer__links a {
