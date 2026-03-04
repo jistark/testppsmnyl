@@ -974,7 +974,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
    §2.5 DIRECTORIO MÉDICO
    ========================================================= */
 .med-directory {
-  background: #f8f7f7;
+  background: var(--c-sand);
   padding: 64px 24px;
 }
 
@@ -1005,7 +1005,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .med-directory__bar {
   background: var(--c-white);
   border-radius: 8px;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  border: 1.5px solid #CCCAC7;
   display: flex;
   align-items: stretch;
   gap: 0;
@@ -1115,49 +1115,51 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   flex-shrink: 0;
 }
 
-/* Quick-links */
-.med-directory__quick-links {
+/* Accesos rápidos — tool strip */
+.med-directory__tools {
   display: flex;
-  align-items: center;
-  gap: 0;
-  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1.5px solid #CCCAC7;
+  background: var(--c-white);
+  overflow: hidden;
 }
 
-.med-directory__ql-divider {
-  width: 1px;
-  height: 48px;
-  background: var(--c-border);
-  flex-shrink: 0;
-}
-
-.med-directory__ql-btn {
+.med-directory__tool {
+  flex: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 12px 20px;
-  color: var(--c-primary);
+  gap: 14px;
+  padding: 20px 24px;
+  border-right: 1px solid #CCCAC7;
+  color: var(--c-black);
   text-decoration: none;
   transition: background 0.15s, color 0.15s;
-  min-width: 88px;
 }
 
-.med-directory__ql-btn:hover {
+.med-directory__tool:last-child {
+  border-right: none;
+}
+
+.med-directory__tool:hover {
   background: #f0f4ff;
+  color: var(--c-primary);
+}
+
+.med-directory__tool-icon {
+  width: 28px; height: 28px;
+  flex-shrink: 0;
+  color: var(--c-primary);
+  transition: color 0.15s;
+}
+
+.med-directory__tool:hover .med-directory__tool-icon {
   color: var(--c-navy);
 }
 
-.med-directory__ql-icon {
-  width: 24px; height: 24px;
-  flex-shrink: 0;
-}
-
-.med-directory__ql-label {
+.med-directory__tool-name {
   font-family: var(--f-body);
-  font-size: 11px; font-weight: 400;
-  line-height: 14px;
-  text-align: center;
+  font-size: 13px; font-weight: 700;
+  line-height: 1.3;
   color: inherit;
 }
 
