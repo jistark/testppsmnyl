@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Más fuertes, juntos | Seguros Monterrey New York Life | Inicio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
@@ -235,24 +232,70 @@
       </div>
 
       <!-- ── Ambulancia ── -->
-      <button class="login-panel__ambulance js-ambulance-open" type="button"
-              aria-label="Solicitar servicio de ambulancia de emergencia">
-        <svg class="login-panel__ambulance-icon" viewBox="0 0 40 26" fill="none" aria-hidden="true">
-          <rect x="1" y="6" width="24" height="17" rx="2" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M25 11l12 5v9H25V11z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-          <circle cx="8" cy="24" r="2.5" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="30" cy="24" r="2.5" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M11 13v5M13.5 15.5h-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M5 6l2-5M9 6l1.5-5M13 6v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        <div class="login-panel__ambulance-text">
-          <span class="login-panel__ambulance-title">Solicitar una ambulancia</span>
-          <span class="login-panel__ambulance-sub">solo para pólizas de gastos médicos</span>
+      <div class="login-panel__ambulance-section" id="ambulanceSection">
+
+        <!-- Collapsed state: CTA button -->
+        <button class="login-panel__ambulance js-ambulance-toggle" type="button"
+                aria-expanded="false" aria-controls="ambulanceDetail"
+                aria-label="Solicitar servicio de ambulancia">
+          <svg class="login-panel__ambulance-icon" viewBox="0 0 40 26" fill="none" aria-hidden="true">
+            <rect x="1" y="6" width="24" height="17" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M25 11l12 5v9H25V11z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <circle cx="8" cy="24" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="30" cy="24" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M11 13v5M13.5 15.5h-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M5 6l2-5M9 6l1.5-5M13 6v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="login-panel__ambulance-text">
+            <span class="login-panel__ambulance-title">Solicitar una ambulancia</span>
+            <span class="login-panel__ambulance-sub">solo para pólizas de gastos médicos</span>
+          </div>
+          <svg class="login-panel__ambulance-arrow" viewBox="0 0 8 14" fill="none" aria-hidden="true">
+            <path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <!-- Expanded state: detail card -->
+        <div class="login-panel__ambulance-detail" id="ambulanceDetail" hidden>
+          <div class="ambulance-detail__header">
+            <svg class="ambulance-detail__icon" viewBox="0 0 40 26" fill="none" aria-hidden="true">
+              <rect x="1" y="6" width="24" height="17" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M25 11l12 5v9H25V11z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <circle cx="8" cy="24" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="30" cy="24" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M11 13v5M13.5 15.5h-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M5 6l2-5M9 6l1.5-5M13 6v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <p class="ambulance-detail__title">Emergencia médica</p>
+              <p class="ambulance-detail__sub">solo para pólizas de gastos médicos mayores</p>
+            </div>
+            <button class="ambulance-detail__close js-ambulance-toggle" type="button"
+                    aria-label="Cerrar" aria-expanded="true" aria-controls="ambulanceDetail">
+              <svg class="icon" viewBox="0 0 14 14" fill="none">
+                <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="ambulance-detail__warning">
+            <svg viewBox="0 0 20 20" fill="none" class="ambulance-detail__warn-icon" aria-hidden="true">
+              <circle cx="10" cy="10" r="9" stroke="#E05C2A" stroke-width="1.5"/>
+              <path d="M10 6v5" stroke="#E05C2A" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="10" cy="14" r="1" fill="#E05C2A"/>
+            </svg>
+            <p>Esta opción solo está disponible si tienes una póliza de gastos médicos mayores.</p>
+          </div>
+          <div class="ambulance-detail__phone">
+            <p class="ambulance-detail__phone-q">¿Deseas contactar con un operador?</p>
+            <a href="tel:8009062100" class="ambulance-detail__phone-num">800 906 21 00</a>
+            <p class="ambulance-detail__phone-inst">Para el servicio de ambulancia marca opción <strong>0</strong>.</p>
+          </div>
+          <div class="ambulance-detail__footer">
+            <p>Ten a la mano tu número de póliza o el nombre completo del asegurado.</p>
+          </div>
         </div>
-        <svg class="login-panel__ambulance-arrow" viewBox="0 0 8 14" fill="none" aria-hidden="true">
-          <path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
+
+      </div>
 
       <!-- ── App banner ── -->
       <div class="login-panel__app-banner">
@@ -310,48 +353,6 @@
     <div class="login-panel__overlay js-close-login" tabindex="-1" aria-hidden="true"></div>
   </div>
 
-  <!-- ===================== MODAL: EMERGENCIA MÉDICA ===================== -->
-  <div class="ambulance-modal" id="ambulanceModal" aria-hidden="true"
-       role="dialog" aria-modal="true" aria-labelledby="ambulanceModalTitle">
-    <div class="ambulance-modal__card">
-      <button class="ambulance-modal__close js-ambulance-close" type="button" aria-label="Cerrar">
-        <svg class="icon" viewBox="0 0 14 14" fill="none">
-          <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </button>
-      <div class="ambulance-modal__header">
-        <h3 class="ambulance-modal__title" id="ambulanceModalTitle">Emergencia médica</h3>
-        <svg class="ambulance-modal__icon" viewBox="0 0 80 55" fill="none" aria-hidden="true">
-          <rect x="2" y="12" width="50" height="35" rx="3" stroke="#243641" stroke-width="2"/>
-          <path d="M52 22l15 10v15H52V22z" stroke="#243641" stroke-width="2" stroke-linejoin="round"/>
-          <circle cx="17" cy="50" r="5" stroke="#243641" stroke-width="2"/>
-          <circle cx="60" cy="50" r="5" stroke="#243641" stroke-width="2"/>
-          <path d="M22 28v10M27 33h-10" stroke="#243641" stroke-width="2" stroke-linecap="round"/>
-          <path d="M10 12l5-10M18 12l3-10M25 12V3" stroke="#243641" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="ambulance-modal__body">
-        <div class="ambulance-modal__warning">
-          <svg viewBox="0 0 20 20" fill="none" class="ambulance-modal__warn-icon" aria-hidden="true">
-            <circle cx="10" cy="10" r="9" stroke="#E05C2A" stroke-width="1.5"/>
-            <path d="M10 6v5" stroke="#E05C2A" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="10" cy="14" r="1" fill="#E05C2A"/>
-          </svg>
-          <p>Esta opción solo está disponible si tienes una póliza de gastos médicos mayores.</p>
-        </div>
-        <div class="ambulance-modal__phone-info">
-          <p class="ambulance-modal__phone-q">¿Deseas contactar con un operador telefónico?</p>
-          <a href="tel:8009062100" class="ambulance-modal__phone-num">800 906 21 00</a>
-          <p class="ambulance-modal__phone-inst">Para solicitar el servicio de ambulancia marca opción <strong>0</strong>.</p>
-        </div>
-      </div>
-      <div class="ambulance-modal__footer">
-        <p>Ten a la mano tu número de póliza o el nombre completo del asegurado.</p>
-      </div>
-    </div>
-    <div class="ambulance-modal__overlay js-ambulance-close"></div>
-  </div>
-
   <!-- NYL brand clip-paths (hidden) -->
   <div style="width:0;height:0;overflow:hidden;position:absolute;" aria-hidden="true">
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1 1">
@@ -383,7 +384,7 @@
         <div class="cmp-hero__content">
           <h1 class="cmp-hero__title">
             <span class="cmp-hero__pretitle">SEGUROS DE VIDA • GASTOS MÉDICOS MAYORES</span>
-            Proteger Mejor® es lo que somos.
+            Proteger Mejor<sup>®</sup> es lo que somos.
           </h1>
           <div class="cmp-hero__description">
             <p>Por más de 65 años, le brindamos a más familias mexicanas tranquilidad y respaldo financiero para su futuro.</p>
@@ -515,7 +516,10 @@
           </div>
 
           <button class="btn btn--primary med-directory__submit" type="button" aria-label="Buscar en el directorio">
-            Buscar
+            <svg class="icon" viewBox="0 0 16 16" fill="none">
+              <circle cx="6.5" cy="6.5" r="5" stroke="white" stroke-width="1.5"/>
+              <path d="M10.5 10.5L14 14" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
           </button>
         </div>
 

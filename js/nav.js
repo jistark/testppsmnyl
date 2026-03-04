@@ -93,7 +93,8 @@ const loginStep2Btn      = document.getElementById('loginStep2Btn');
 const loginStep2Email    = document.getElementById('loginStep2EmailHint');
 const loginFormStep1     = document.getElementById('loginFormStep1');
 const loginFormStep2     = document.getElementById('loginFormStep2');
-const ambulanceModal     = document.getElementById('ambulanceModal');
+const ambulanceSection   = document.getElementById('ambulanceSection');
+const ambulanceDetail    = document.getElementById('ambulanceDetail');
 
 const menuTriggers  = document.querySelectorAll('.js-menu-trigger');
 const searchTrigger = document.querySelector('.js-search-trigger');
@@ -508,20 +509,20 @@ document.querySelector('.js-login-step-back')?.addEventListener('click', () => {
   setTimeout(() => loginUsername.focus(), 60);
 });
 
-// ─── Ambulancia modal ─────────────────────────────────────
-function openAmbulance() {
-  ambulanceModal.classList.add('is-open');
-  ambulanceModal.setAttribute('aria-hidden', 'false');
-}
-function closeAmbulance() {
-  ambulanceModal.classList.remove('is-open');
-  ambulanceModal.setAttribute('aria-hidden', 'true');
+// ─── Ambulancia inline toggle ──────────────────────────────
+function toggleAmbulance(open) {
+  const isOpen = open ?? ambulanceDetail.hidden;
+  ambulanceDetail.hidden = !isOpen;
+  const mainBtn = ambulanceSection.querySelector('button.login-panel__ambulance');
+  if (mainBtn) mainBtn.hidden = isOpen;
+  ambulanceSection.querySelectorAll('.js-ambulance-toggle').forEach(btn =>
+    btn.setAttribute('aria-expanded', String(isOpen))
+  );
 }
 
-document.querySelector('.js-ambulance-open')?.addEventListener('click', openAmbulance);
-document.querySelectorAll('.js-ambulance-close').forEach(el =>
-  el.addEventListener('click', closeAmbulance)
-);
+ambulanceSection?.addEventListener('click', e => {
+  if (e.target.closest('.js-ambulance-toggle')) toggleAmbulance();
+});
 
 // ─── Email subscribe (3 estados) ──────────────────────────
 // Patrón: cmp-email-subscribe con novalidate + JS custom de NYL
@@ -631,8 +632,8 @@ document.querySelectorAll('.js-drawer-back').forEach(el =>
 // Escape cierra todo
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;
-  if (ambulanceModal?.classList.contains('is-open')) { closeAmbulance(); return; }
-  if (megaMenu.classList.contains('is-open'))        { closeMenu();      return; }
+  if (ambulanceDetail && !ambulanceDetail.hidden)    { toggleAmbulance(false); return; }
+  if (megaMenu.classList.contains('is-open'))        { closeMenu();            return; }
   if (searchPanel.classList.contains('is-open'))     { closeSearch();    return; }
   if (loginPanel.classList.contains('is-open'))      { closeLogin();     return; }
 });
