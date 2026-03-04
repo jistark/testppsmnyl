@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seguros Monterrey New York Life</title>
+  <title>Más fuertes, juntos | Seguros Monterrey New York Life | Inicio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -167,43 +167,125 @@
         </svg>
       </button>
 
-      <h2 class="login-panel__title" id="loginPanelTitle">Inicia sesión</h2>
+      <h2 class="login-panel__title" id="loginPanelTitle">Mi SMNYL Clientes</h2>
       <p class="login-panel__subtitle">
-        ¿No tienes cuenta?
-        <a href="#" class="login-panel__register-link">Regístrate aquí</a>
+        Si no tienes cuenta,
+        <a href="#" class="login-panel__register-link">regístrate aquí</a>
       </p>
 
-      <form class="login-form" id="loginForm" novalidate>
-        <div class="login-form__field">
-          <label class="login-form__label" for="loginUsername">Usuario</label>
-          <input class="login-form__input" id="loginUsername" type="text"
-                 name="username" required maxlength="50"
-                 autocomplete="username" aria-label="Usuario">
-        </div>
-        <div class="login-form__field">
-          <label class="login-form__label" for="loginPassword">Contraseña</label>
-          <input class="login-form__input" id="loginPassword" type="password"
-                 name="password" required maxlength="100"
-                 autocomplete="current-password" aria-label="Contraseña">
-        </div>
-        <div class="login-form__remember">
-          <label class="custom-checkbox">
-            <input type="checkbox" id="loginRemember" name="remember">
-            <span class="custom-checkbox__box" aria-hidden="true"></span>
-            <span class="custom-checkbox__label">Recordar usuario</span>
-          </label>
-        </div>
-        <button class="btn btn--primary login-form__submit" id="loginSubmitBtn"
-                type="submit" disabled aria-label="Iniciar sesión">
-          Iniciar sesión
-        </button>
-        <a href="#" class="login-form__trouble">¿Problemas para iniciar sesión?</a>
-      </form>
+      <!-- ── Paso 1: correo ── -->
+      <div id="loginStep1">
+        <form class="login-form" id="loginFormStep1" novalidate>
+          <div class="login-form__field">
+            <label class="login-form__label" for="loginUsername">Correo electrónico</label>
+            <input class="login-form__input" id="loginUsername" type="email"
+                   name="username" required maxlength="100"
+                   autocomplete="email" placeholder="nombre@correo.com">
+          </div>
+          <button class="btn btn--primary login-form__submit" id="loginStep1Btn"
+                  type="submit" disabled aria-label="Continuar con inicio de sesión">
+            Iniciar sesión
+          </button>
+        </form>
+        <a href="https://www.mismnyl.com/?r=1772633303243"
+           class="btn btn--outline login-form__create"
+           target="_blank" rel="noopener noreferrer">
+          Crear una cuenta
+        </a>
+        <a href="https://www.mismnyl.com/?r=1772633303243#/display/soporte-tecnico-publico"
+           class="login-form__trouble">Necesito ayuda</a>
+      </div>
 
+      <!-- ── Paso 2: contraseña ── -->
+      <div id="loginStep2" hidden>
+        <div class="login-step2__who">
+          <div class="login-step2__avatar" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="20" cy="15" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M7 35c2-7 5-9 13-9s11 2 13 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="login-step2__info">
+            <p class="login-step2__email" id="loginStep2EmailHint"></p>
+            <button class="login-step2__change js-login-step-back" type="button">Cambiar cuenta</button>
+          </div>
+        </div>
+        <form class="login-form" id="loginFormStep2" novalidate>
+          <div class="login-form__field">
+            <label class="login-form__label" for="loginPassword">Contraseña</label>
+            <input class="login-form__input" id="loginPassword" type="password"
+                   name="password" required maxlength="100"
+                   autocomplete="current-password">
+          </div>
+          <div class="login-form__remember">
+            <label class="custom-checkbox">
+              <input type="checkbox" id="loginRemember" name="remember">
+              <span class="custom-checkbox__box" aria-hidden="true"></span>
+              <span class="custom-checkbox__label">Recordar usuario</span>
+            </label>
+          </div>
+          <button class="btn btn--primary login-form__submit" id="loginStep2Btn"
+                  type="submit" disabled aria-label="Iniciar sesión">
+            Iniciar sesión
+          </button>
+        </form>
+        <a href="https://www.mismnyl.com/?r=1772633303243#/display/soporte-tecnico-publico"
+           class="login-form__trouble">Necesito ayuda</a>
+      </div>
+
+      <!-- ── Ambulancia ── -->
+      <button class="login-panel__ambulance js-ambulance-open" type="button"
+              aria-label="Solicitar servicio de ambulancia de emergencia">
+        <svg class="login-panel__ambulance-icon" viewBox="0 0 40 26" fill="none" aria-hidden="true">
+          <rect x="1" y="6" width="24" height="17" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M25 11l12 5v9H25V11z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <circle cx="8" cy="24" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="30" cy="24" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M11 13v5M13.5 15.5h-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M5 6l2-5M9 6l1.5-5M13 6v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="login-panel__ambulance-text">
+          <span class="login-panel__ambulance-title">Solicitar una ambulancia</span>
+          <span class="login-panel__ambulance-sub">solo para pólizas de gastos médicos</span>
+        </div>
+        <svg class="login-panel__ambulance-arrow" viewBox="0 0 8 14" fill="none" aria-hidden="true">
+          <path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- ── App banner ── -->
       <div class="login-panel__app-banner">
         <div class="login-panel__app-banner-text">
           <p class="login-panel__app-banner-title">Administra tu cuenta desde tu celular</p>
           <p class="login-panel__app-banner-sub">Descarga la app Mi SMNYL Clientes</p>
+        </div>
+        <div class="login-panel__store-badges">
+          <a href="https://apps.apple.com/mx/app/mi-smnyl-clientes/id1502892286"
+             class="store-badge" target="_blank" rel="noopener noreferrer"
+             aria-label="Descargar en App Store">
+            <svg class="store-badge__icon" viewBox="0 0 14 17" fill="currentColor" aria-hidden="true">
+              <path d="M11.48 8.86c-.01-1.45 1.18-2.15 1.24-2.19-.68-.99-1.73-1.13-2.1-1.14-.9-.09-1.75.53-2.2.53-.45 0-1.14-.51-1.88-.5-.97.01-1.87.57-2.37 1.44-1 1.74-.26 4.33.72 5.75.48.69 1.04 1.47 1.79 1.44.71-.03.99-.46 1.84-.46.85 0 1.09.46 1.84.45.77-.01 1.26-.71 1.73-1.4.55-.8.77-1.58.79-1.62-.02 0-1.51-.58-1.52-2.29h.12zm-1.42-3.81c.39-.48.66-1.15.59-1.82-.57.02-1.26.39-1.67.86-.37.42-.69 1.09-.61 1.74.64.05 1.29-.33 1.68-.78z"/>
+            </svg>
+            <span class="store-badge__text">
+              <small>Descargar en el</small>
+              <strong>App Store</strong>
+            </span>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=mx.com.smnyl.mismnylclientes"
+             class="store-badge" target="_blank" rel="noopener noreferrer"
+             aria-label="Disponible en Google Play">
+            <svg class="store-badge__icon" viewBox="0 0 13 15" fill="none" aria-hidden="true">
+              <path d="M.5.7C.3 1 .2 1.4.2 1.9v11.2c0 .5.1.9.4 1.1l.1.1 6.3-6.3v-.1L.6.6.5.7z" fill="#4FC3F7"/>
+              <path d="M9 10.1L6.9 8.1V7.9l2-2 .1.1 2.4 1.3c.7.4.7 1 0 1.4L9 10h-.1l.1.1z" fill="#FFCA28"/>
+              <path d="M9.1 10.1L6.9 8.1.5 14.3c.2.2.6.2 1.1-.1L9.1 10z" fill="#F44336"/>
+              <path d="M9.1 7.9L1.6.7C1.1.4.7.4.5.7L6.9 7.1l2.2.8z" fill="#4CAF50"/>
+            </svg>
+            <span class="store-badge__text">
+              <small>Disponible en</small>
+              <strong>Google Play</strong>
+            </span>
+          </a>
         </div>
       </div>
 
@@ -211,22 +293,63 @@
         <div class="login-panel__footer-col">
           <p class="login-panel__footer-col-title">Otros productos</p>
           <ul>
-            <li><a href="#">SMNYL Securities</a></li>
-            <li><a href="#">Fondos de Inversión</a></li>
+            <li><a href="#">Visualiza SMNYL</a></li>
           </ul>
         </div>
         <div class="login-panel__footer-col">
           <p class="login-panel__footer-col-title">Links rápidos</p>
           <ul>
-            <li><a href="#">Realizar un pago</a></li>
-            <li><a href="#">Formularios de servicio</a></li>
-            <li><a href="#">Servicios de cuenta</a></li>
+            <li><a href="#">Qué hacer en caso de siniestro</a></li>
+            <li><a href="#">Pagar mi póliza</a></li>
+            <li><a href="#">Iniciar o consultar trámite GMM</a></li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="login-panel__overlay js-close-login" tabindex="-1" aria-hidden="true"></div>
+  </div>
+
+  <!-- ===================== MODAL: EMERGENCIA MÉDICA ===================== -->
+  <div class="ambulance-modal" id="ambulanceModal" aria-hidden="true"
+       role="dialog" aria-modal="true" aria-labelledby="ambulanceModalTitle">
+    <div class="ambulance-modal__card">
+      <button class="ambulance-modal__close js-ambulance-close" type="button" aria-label="Cerrar">
+        <svg class="icon" viewBox="0 0 14 14" fill="none">
+          <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="ambulance-modal__header">
+        <h3 class="ambulance-modal__title" id="ambulanceModalTitle">Emergencia médica</h3>
+        <svg class="ambulance-modal__icon" viewBox="0 0 80 55" fill="none" aria-hidden="true">
+          <rect x="2" y="12" width="50" height="35" rx="3" stroke="#243641" stroke-width="2"/>
+          <path d="M52 22l15 10v15H52V22z" stroke="#243641" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="17" cy="50" r="5" stroke="#243641" stroke-width="2"/>
+          <circle cx="60" cy="50" r="5" stroke="#243641" stroke-width="2"/>
+          <path d="M22 28v10M27 33h-10" stroke="#243641" stroke-width="2" stroke-linecap="round"/>
+          <path d="M10 12l5-10M18 12l3-10M25 12V3" stroke="#243641" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="ambulance-modal__body">
+        <div class="ambulance-modal__warning">
+          <svg viewBox="0 0 20 20" fill="none" class="ambulance-modal__warn-icon" aria-hidden="true">
+            <circle cx="10" cy="10" r="9" stroke="#E05C2A" stroke-width="1.5"/>
+            <path d="M10 6v5" stroke="#E05C2A" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="10" cy="14" r="1" fill="#E05C2A"/>
+          </svg>
+          <p>Esta opción solo está disponible si tienes una póliza de gastos médicos mayores.</p>
+        </div>
+        <div class="ambulance-modal__phone-info">
+          <p class="ambulance-modal__phone-q">¿Deseas contactar con un operador telefónico?</p>
+          <a href="tel:8009062100" class="ambulance-modal__phone-num">800 906 21 00</a>
+          <p class="ambulance-modal__phone-inst">Para solicitar el servicio de ambulancia marca opción <strong>0</strong>.</p>
+        </div>
+      </div>
+      <div class="ambulance-modal__footer">
+        <p>Ten a la mano tu número de póliza o el nombre completo del asegurado.</p>
+      </div>
+    </div>
+    <div class="ambulance-modal__overlay js-ambulance-close"></div>
   </div>
 
   <!-- NYL brand clip-paths (hidden) -->
@@ -291,7 +414,7 @@
         <div class="med-directory__header">
           <p class="med-directory__eyebrow">GASTOS MÉDICOS MAYORES</p>
           <h2 class="med-directory__title" id="med-directory-title">
-            Directorio de proveedores médicos en convenio
+            Directorio médico
           </h2>
         </div>
 
@@ -300,15 +423,15 @@
           <div class="med-directory__controls">
 
             <div class="med-directory__field">
-              <label class="sr-only" for="md-plan">Tipo de plan</label>
+              <label class="sr-only" for="md-plan">Encontrar…</label>
               <div class="med-directory__select-wrap">
                 <select id="md-plan" class="med-directory__select" aria-label="Tipo de plan">
-                  <option value="">Tipo de plan</option>
-                  <option value="1">Plan Individual</option>
-                  <option value="2">Plan Colectivo</option>
-                  <option value="3">Hospitales y Clínicas</option>
-                  <option value="4">Médicos Especialistas</option>
-                  <option value="5">Servicios Especializados</option>
+                  <option value="">Encontrar…</option>
+                  <option value="1">Hospitales GMM Individual</option>
+                  <option value="2">Hospitales GMM Colectivo</option>
+                  <option value="3">Hospitales y clínicas en red</option>
+                  <option value="4">Médicos especialistas en red</option>
+                  <option value="5">Servicios especializados en red</option>
                 </select>
               </div>
             </div>
@@ -316,10 +439,10 @@
             <div class="med-directory__divider" aria-hidden="true"></div>
 
             <div class="med-directory__field">
-              <label class="sr-only" for="md-subplan">Subplan</label>
+              <label class="sr-only" for="md-subplan">Mi plan es…</label>
               <div class="med-directory__select-wrap">
                 <select id="md-subplan" class="med-directory__select" aria-label="Subplan">
-                  <option value="">Subplan</option>
+                  <option value="">Mi plan es…</option>
                   <option value="int">Internacional</option>
                   <option value="amfa">AM Flex A</option>
                   <option value="pt">Práctico Total</option>
@@ -383,8 +506,8 @@
                 id="md-keyword"
                 class="med-directory__input"
                 type="text"
-                placeholder="Buscar proveedor o especialidad"
-                aria-label="Buscar proveedor o especialidad"
+                placeholder="Buscar un proveedor o especialidad"
+                aria-label="Buscar un proveedor o especialidad"
                 autocomplete="off"
               >
             </div>
@@ -399,16 +522,6 @@
         <!-- Accesos rápidos -->
         <div class="med-directory__tools" aria-label="Accesos rápidos">
 
-          <a href="https://www.smnyl-clientes.com.mx/SMNYL.clientes.Claims/"
-             class="med-directory__tool" target="_blank" rel="noopener noreferrer"
-             aria-label="Trámites Gastos Médicos Mayores — abre en nueva pestaña">
-            <svg class="med-directory__tool-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="med-directory__tool-name">Trámites GMM</span>
-          </a>
-
           <a href="https://www.smnyl-clientes.com.mx/PagoEnLinea/"
              class="med-directory__tool" target="_blank" rel="noopener noreferrer"
              aria-label="Pago en línea — abre en nueva pestaña">
@@ -417,7 +530,17 @@
               <path d="M1 10h22" stroke="currentColor" stroke-width="1.5"/>
               <path d="M5 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
-            <span class="med-directory__tool-name">Pago en línea</span>
+            <span class="med-directory__tool-name">Paga tu póliza</span>
+          </a>
+
+          <a href="https://www.smnyl-clientes.com.mx/SMNYL.clientes.Claims/"
+             class="med-directory__tool" target="_blank" rel="noopener noreferrer"
+             aria-label="Trámites Gastos Médicos Mayores — abre en nueva pestaña">
+            <svg class="med-directory__tool-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="med-directory__tool-name">Inicia o consulta un trámite</span>
           </a>
 
           <a href="https://www.smnyl-clientes.com.mx/Tokenizador/"
@@ -428,7 +551,7 @@
               <path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
               <circle cx="12" cy="16" r="1.5" fill="currentColor"/>
             </svg>
-            <span class="med-directory__tool-name">Tokenizador</span>
+            <span class="med-directory__tool-name">Tokeniza tu tarjeta</span>
           </a>
 
           <a href="https://www.smnyl-clientes.com.mx/Bancos/"
@@ -437,7 +560,7 @@
             <svg class="med-directory__tool-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M3 21h18M3 10h18M5 10V21M9 10V21M15 10V21M19 10V21M12 3L3 10h18L12 3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span class="med-directory__tool-name">Bancos</span>
+            <span class="med-directory__tool-name">Referencias pago bancario</span>
           </a>
 
           <a href="https://www.odontoprev.com.mx/mapa/"
@@ -446,7 +569,7 @@
             <svg class="med-directory__tool-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M12 2C9.5 2 7 3.5 6 6C5 7.5 5 9 5.5 10.5C6 12 6.5 13 6.5 14.5C6.5 16.5 7 20 8.5 22C9 22.5 9.5 22 9.5 21.5C9.5 19.5 9.5 17 11 15.5C11.5 15 12 15 12 15C12 15 12.5 15 13 15.5C14.5 17 14.5 19.5 14.5 21.5C14.5 22 15 22.5 15.5 22C17 20 17.5 16.5 17.5 14.5C17.5 13 18 12 18.5 10.5C19 9 19 7.5 18 6C17 3.5 14.5 2 12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span class="med-directory__tool-name">Proveedor dental</span>
+            <span class="med-directory__tool-name">Proveedores dentales</span>
           </a>
 
           <a href="https://www.smnyl-clientes.com.mx/WATabuladoresMedicos/BuscadorTabuladoresGMMI.aspx"
@@ -458,7 +581,7 @@
               <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
               <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
             </svg>
-            <span class="med-directory__tool-name">Tabulador médico</span>
+            <span class="med-directory__tool-name">Tabuladores médicos</span>
           </a>
 
         </div>

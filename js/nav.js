@@ -83,11 +83,17 @@ const searchInput   = document.getElementById('searchInput');
 const searchClear   = document.querySelector('.js-search-clear');
 const searchDropdown = document.getElementById('searchDropdown');
 
-const loginPanel    = document.getElementById('loginPanel');
-const loginForm     = document.getElementById('loginForm');
-const loginUsername = document.getElementById('loginUsername');
-const loginPassword = document.getElementById('loginPassword');
-const loginSubmit   = document.getElementById('loginSubmitBtn');
+const loginPanel         = document.getElementById('loginPanel');
+const loginUsername      = document.getElementById('loginUsername');
+const loginPassword      = document.getElementById('loginPassword');
+const loginStep1         = document.getElementById('loginStep1');
+const loginStep2         = document.getElementById('loginStep2');
+const loginStep1Btn      = document.getElementById('loginStep1Btn');
+const loginStep2Btn      = document.getElementById('loginStep2Btn');
+const loginStep2Email    = document.getElementById('loginStep2EmailHint');
+const loginFormStep1     = document.getElementById('loginFormStep1');
+const loginFormStep2     = document.getElementById('loginFormStep2');
+const ambulanceModal     = document.getElementById('ambulanceModal');
 
 const menuTriggers  = document.querySelectorAll('.js-menu-trigger');
 const searchTrigger = document.querySelector('.js-search-trigger');
@@ -268,10 +274,6 @@ function renderL2(menuId, itemId) {
   const ctaHref = item.ctaHref || menu.ctaHref || sectionHref;
 
   sidebarL2Cont.innerHTML = `
-    <h6 class="sidebar__section-title">
-      <a href="${sectionHref}">${item.label}</a>
-      ${chevronRight}
-    </h6>
     <div class="product-list">
       ${item.products.map(p => `
         <a href="${p.href || '#'}" class="product-item">
@@ -438,9 +440,19 @@ searchInput.addEventListener('keydown', e => {
 });
 
 // ─── Login panel ──────────────────────────────────────────
+function resetLoginSteps() {
+  loginStep1.hidden = false;
+  loginStep2.hidden = true;
+  loginUsername.value = '';
+  loginPassword.value = '';
+  loginStep1Btn.disabled = true;
+  loginStep2Btn.disabled = true;
+}
+
 function openLogin() {
   closeMenu(false);
   closeSearch(false);
+  resetLoginSteps();
 
   loginPanel.classList.add('is-open');
   loginPanel.setAttribute('aria-hidden', 'false');
@@ -459,22 +471,57 @@ function closeLogin(restoreFocus = true) {
   if (cleanups.login) { cleanups.login(); cleanups.login = null; }
 }
 
-// Login: habilitar submit solo si ambos campos tienen contenido
-// Patrón: cmp-header__login-btn--disable de NYL
-function syncLoginButton() {
-  const hasUser = loginUsername.value.trim().length > 0;
-  const hasPass = loginPassword.value.trim().length > 0;
-  loginSubmit.disabled = !(hasUser && hasPass);
-}
+// Step 1: enable button when email is non-empty
+loginUsername.addEventListener('input', () => {
+  loginStep1Btn.disabled = loginUsername.value.trim().length === 0;
+});
 
-loginUsername.addEventListener('input', syncLoginButton);
-loginPassword.addEventListener('input', syncLoginButton);
-
-loginForm.addEventListener('submit', e => {
+// Step 1 submit → advance to step 2
+loginFormStep1.addEventListener('submit', e => {
   e.preventDefault();
-  console.log('[SMNYL Login] Enviando credenciales...');
+  const email = loginUsername.value.trim();
+  if (!email) return;
+  loginStep2Email.textContent = email;
+  loginStep1.hidden = true;
+  loginStep2.hidden = false;
+  setTimeout(() => loginPassword.focus(), 60);
+});
+
+// Step 2: enable button when password is non-empty
+loginPassword.addEventListener('input', () => {
+  loginStep2Btn.disabled = loginPassword.value.trim().length === 0;
+});
+
+// Step 2 submit
+loginFormStep2.addEventListener('submit', e => {
+  e.preventDefault();
+  console.log('[SMNYL Login] Iniciando sesión...');
   // Aquí se conectaría el POST real al portal
 });
+
+// "Cambiar cuenta" → back to step 1
+document.querySelector('.js-login-step-back')?.addEventListener('click', () => {
+  loginStep2.hidden = true;
+  loginStep1.hidden = false;
+  loginPassword.value = '';
+  loginStep2Btn.disabled = true;
+  setTimeout(() => loginUsername.focus(), 60);
+});
+
+// ─── Ambulancia modal ─────────────────────────────────────
+function openAmbulance() {
+  ambulanceModal.classList.add('is-open');
+  ambulanceModal.setAttribute('aria-hidden', 'false');
+}
+function closeAmbulance() {
+  ambulanceModal.classList.remove('is-open');
+  ambulanceModal.setAttribute('aria-hidden', 'true');
+}
+
+document.querySelector('.js-ambulance-open')?.addEventListener('click', openAmbulance);
+document.querySelectorAll('.js-ambulance-close').forEach(el =>
+  el.addEventListener('click', closeAmbulance)
+);
 
 // ─── Email subscribe (3 estados) ──────────────────────────
 // Patrón: cmp-email-subscribe con novalidate + JS custom de NYL
@@ -584,7 +631,8 @@ document.querySelectorAll('.js-drawer-back').forEach(el =>
 // Escape cierra todo
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;
-  if (megaMenu.classList.contains('is-open'))    { closeMenu();   return; }
-  if (searchPanel.classList.contains('is-open')) { closeSearch(); return; }
-  if (loginPanel.classList.contains('is-open'))  { closeLogin();  return; }
+  if (ambulanceModal?.classList.contains('is-open')) { closeAmbulance(); return; }
+  if (megaMenu.classList.contains('is-open'))        { closeMenu();      return; }
+  if (searchPanel.classList.contains('is-open'))     { closeSearch();    return; }
+  if (loginPanel.classList.contains('is-open'))      { closeLogin();     return; }
 });
