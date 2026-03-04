@@ -159,19 +159,19 @@
        role="dialog" aria-modal="true" aria-labelledby="loginPanelTitle">
 
     <div class="sidebar sidebar--login">
-      <div class="login-panel__header">
-        <div>
-          <p class="login-panel__eyebrow">Mi SMNYL Clientes</p>
-          <h2 class="login-panel__title" id="loginPanelTitle">Inicia sesión</h2>
-        </div>
-        <button class="login-panel__close js-close-login" type="button"
-                aria-label="Cerrar panel de inicio de sesión">
-          <svg class="icon" viewBox="0 0 14 14" fill="none">
-            <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5"
-                  stroke-linecap="round"/>
-          </svg>
-        </button>
-      </div>
+      <button class="login-panel__close js-close-login" type="button"
+              aria-label="Cerrar panel de inicio de sesión">
+        <svg class="icon" viewBox="0 0 14 14" fill="none">
+          <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <h2 class="login-panel__title" id="loginPanelTitle">Inicia sesión</h2>
+      <p class="login-panel__subtitle">
+        ¿No tienes cuenta?
+        <a href="#" class="login-panel__register-link">Regístrate aquí</a>
+      </p>
 
       <form class="login-form" id="loginForm" novalidate>
         <div class="login-form__field">
@@ -200,13 +200,29 @@
         <a href="#" class="login-form__trouble">¿Problemas para iniciar sesión?</a>
       </form>
 
-      <div class="login-panel__divider">
-        <span>o</span>
+      <div class="login-panel__app-banner">
+        <div class="login-panel__app-banner-text">
+          <p class="login-panel__app-banner-title">Administra tu cuenta desde tu celular</p>
+          <p class="login-panel__app-banner-sub">Descarga la app Mi SMNYL Clientes</p>
+        </div>
       </div>
 
-      <div class="login-panel__alt">
-        <p class="login-panel__alt-text">¿Eres asesor?</p>
-        <a href="#" class="btn btn--outline btn--sm">Acceso asesores</a>
+      <div class="login-panel__footer-links">
+        <div class="login-panel__footer-col">
+          <p class="login-panel__footer-col-title">Otros productos</p>
+          <ul>
+            <li><a href="#">SMNYL Securities</a></li>
+            <li><a href="#">Fondos de Inversión</a></li>
+          </ul>
+        </div>
+        <div class="login-panel__footer-col">
+          <p class="login-panel__footer-col-title">Links rápidos</p>
+          <ul>
+            <li><a href="#">Realizar un pago</a></li>
+            <li><a href="#">Formularios de servicio</a></li>
+            <li><a href="#">Servicios de cuenta</a></li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -264,6 +280,152 @@
           Más información
           <span class="button--arrow" aria-hidden="true"><span class="button--arrow-icon"></span></span>
         </a>
+      </div>
+    </section>
+
+    <!-- §2.5 DIRECTORIO MÉDICO ------------------------------ -->
+    <section class="med-directory" id="directorio-medico" aria-labelledby="med-directory-title">
+      <div class="med-directory__inner">
+
+        <!-- Header -->
+        <div class="med-directory__header">
+          <p class="med-directory__eyebrow">GASTOS MÉDICOS MAYORES</p>
+          <h2 class="med-directory__title" id="med-directory-title">
+            Directorio de proveedores médicos en convenio
+          </h2>
+        </div>
+
+        <!-- Search bar card -->
+        <div class="med-directory__bar" role="search" aria-label="Directorio de proveedores médicos">
+          <div class="med-directory__controls">
+
+            <div class="med-directory__field">
+              <label class="sr-only" for="md-plan">Tipo de plan</label>
+              <div class="med-directory__select-wrap">
+                <select id="md-plan" class="med-directory__select" aria-label="Tipo de plan">
+                  <option value="">Tipo de plan</option>
+                  <option value="1">Plan Individual</option>
+                  <option value="2">Plan Colectivo</option>
+                  <option value="3">Hospitales y Clínicas</option>
+                  <option value="4">Médicos Especialistas</option>
+                  <option value="5">Servicios Especializados</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="med-directory__divider" aria-hidden="true"></div>
+
+            <div class="med-directory__field">
+              <label class="sr-only" for="md-subplan">Subplan</label>
+              <div class="med-directory__select-wrap">
+                <select id="md-subplan" class="med-directory__select" aria-label="Subplan">
+                  <option value="">Subplan</option>
+                  <option value="int">Internacional</option>
+                  <option value="amfa">AM Flex A</option>
+                  <option value="pt">Práctico Total</option>
+                  <option value="pleno">Pleno</option>
+                  <option value="integro">Íntegro</option>
+                  <option value="prac">Práctico</option>
+                  <option value="orig">Origina</option>
+                  <option value="orig1">Origina 1</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="med-directory__divider" aria-hidden="true"></div>
+
+            <div class="med-directory__field">
+              <label class="sr-only" for="md-estado">Estado</label>
+              <div class="med-directory__select-wrap">
+                <select id="md-estado" class="med-directory__select" aria-label="Estado">
+                  <option value="">Estado</option>
+                  <option value="AGS">Aguascalientes</option>
+                  <option value="BC">Baja California</option>
+                  <option value="BCS">Baja California Sur</option>
+                  <option value="CAMP">Campeche</option>
+                  <option value="CHIS">Chiapas</option>
+                  <option value="CHIH">Chihuahua</option>
+                  <option value="CDMX">Ciudad de México</option>
+                  <option value="COAH">Coahuila</option>
+                  <option value="COL">Colima</option>
+                  <option value="DGO">Durango</option>
+                  <option value="GTO">Guanajuato</option>
+                  <option value="GRO">Guerrero</option>
+                  <option value="HGO">Hidalgo</option>
+                  <option value="JAL">Jalisco</option>
+                  <option value="MEX">Estado de México</option>
+                  <option value="MICH">Michoacán</option>
+                  <option value="MOR">Morelos</option>
+                  <option value="NAY">Nayarit</option>
+                  <option value="NL">Nuevo León</option>
+                  <option value="OAX">Oaxaca</option>
+                  <option value="PUE">Puebla</option>
+                  <option value="QRO">Querétaro</option>
+                  <option value="QROO">Quintana Roo</option>
+                  <option value="SLP">San Luis Potosí</option>
+                  <option value="SIN">Sinaloa</option>
+                  <option value="SON">Sonora</option>
+                  <option value="TAB">Tabasco</option>
+                  <option value="TAMPS">Tamaulipas</option>
+                  <option value="TLAX">Tlaxcala</option>
+                  <option value="VER">Veracruz</option>
+                  <option value="YUC">Yucatán</option>
+                  <option value="ZAC">Zacatecas</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="med-directory__divider" aria-hidden="true"></div>
+
+            <div class="med-directory__field med-directory__field--grow">
+              <label class="sr-only" for="md-keyword">Búsqueda abierta</label>
+              <input
+                id="md-keyword"
+                class="med-directory__input"
+                type="text"
+                placeholder="Buscar proveedor o especialidad"
+                aria-label="Buscar proveedor o especialidad"
+                autocomplete="off"
+              >
+            </div>
+
+          </div>
+
+          <button class="btn btn--primary med-directory__submit" type="button" aria-label="Buscar en el directorio">
+            Buscar
+          </button>
+
+          <!-- Quick-link buttons -->
+          <div class="med-directory__quick-links" aria-label="Accesos rápidos">
+            <div class="med-directory__ql-divider" aria-hidden="true"></div>
+
+            <a href="https://www.odontoprev.com.mx/mapa/"
+               class="med-directory__ql-btn"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Proveedor dental — abre en nueva pestaña">
+              <svg class="med-directory__ql-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M12 2C9.5 2 7 3.5 6 6C5 7.5 5 9 5.5 10.5C6 12 6.5 13 6.5 14.5C6.5 16.5 7 20 8.5 22C9 22.5 9.5 22 9.5 21.5C9.5 19.5 9.5 17 11 15.5C11.5 15 12 15 12 15C12 15 12.5 15 13 15.5C14.5 17 14.5 19.5 14.5 21.5C14.5 22 15 22.5 15.5 22C17 20 17.5 16.5 17.5 14.5C17.5 13 18 12 18.5 10.5C19 9 19 7.5 18 6C17 3.5 14.5 2 12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="med-directory__ql-label">Proveedor<br>dental</span>
+            </a>
+
+            <a href="https://www.smnyl-clientes.com.mx/WATabuladoresMedicos/BuscadorTabuladoresGMMI.aspx"
+               class="med-directory__ql-btn"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Tabulador médico — abre en nueva pestaña">
+              <svg class="med-directory__ql-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              <span class="med-directory__ql-label">Tabulador<br>médico</span>
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
 
